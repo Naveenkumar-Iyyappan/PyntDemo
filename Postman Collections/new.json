@@ -1539,22 +1539,22 @@
 	],
 	"variable": [
 		{
-			"id": "4690afc8-0fee-4f15-8085-2462dedc73d5",
+			"id": "e563e50f-c1bd-472d-b516-c89afd3c8687",
 			"key": "port",
 			"value": "5001"
 		},
 		{
-			"id": "14ecf6e6-1d85-4472-9008-47a34040612e",
+			"id": "8c5a4138-d7f7-4f7c-a08b-bede8d4d2b6a",
 			"key": "API-KEY",
 			"value": ""
 		},
 		{
-			"id": "e296cdac-bb0f-4759-8703-4f8ceb7dc4de",
+			"id": "3534f1c0-7bbe-4ea8-bb3c-f33526cb3348",
 			"key": "YOUR-COLLECTION",
 			"value": ""
 		},
 		{
-			"id": "aeab24ad-98e8-43fb-9958-b05a19baae4c",
+			"id": "708b7f5b-dc99-4e3e-a9c8-3b1c9e5ed292",
 			"key": "scanId",
 			"value": ""
 		}
