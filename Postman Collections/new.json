@@ -8,106 +8,107 @@
 	"item": [
 		{
 			"name": "New Folder",
-			"item": [],
-			"id": "9aae6a5f-26ba-4291-9fe4-dc31637328a6"
-		},
-		{
-			"name": "Vault?",
-			"event": [
+			"item": [
 				{
-					"listen": "test",
-					"script": {
-						"type": "text/javascript",
-						"exec": [
-							"var jsonData = JSON.parse(responseBody);",
-							"postman.setEnvironmentVariable(\"datahub_access_token\", jsonData.access_token)"
+					"name": "Vault?",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"type": "text/javascript",
+								"exec": [
+									"var jsonData = JSON.parse(responseBody);",
+									"postman.setEnvironmentVariable(\"datahub_access_token\", jsonData.access_token)"
+								],
+								"id": "ce81f092-bf2f-4b99-af7f-e1b1259ad867"
+							}
+						}
+					],
+					"id": "c5bf0ba6-89a5-43bc-badb-95d93da2448f",
+					"protocolProfileBehavior": {
+						"disableBodyPruning": true
+					},
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Content-Type",
+								"name": "Content-Type",
+								"type": "text",
+								"value": "application/json"
+							},
+							{
+								"key": "Host",
+								"type": "text",
+								"value": "login.microsoftonline.com"
+							},
+							{
+								"key": "Authorization",
+								"type": "text",
+								"value": "bearer {{access_token}}"
+							},
+							{
+								"key": "Access-Charset",
+								"type": "text",
+								"value": "utf-8"
+							}
 						],
-						"id": "ce81f092-bf2f-4b99-af7f-e1b1259ad867"
-					}
+						"body": {
+							"mode": "urlencoded",
+							"urlencoded": [
+								{
+									"key": "client_id",
+									"value": "acbd7df9-1301-4ac7-83b0-a159847a84eb",
+									"type": "text"
+								},
+								{
+									"key": "client_secret",
+									"value": "7SHldRbn-J1.Jq.24GeBG-fAO_2Rk.NGjm",
+									"type": "text"
+								},
+								{
+									"key": "resource",
+									"value": "acbd7df9-1301-4ac7-83b0-a159847a84eb",
+									"type": "text"
+								},
+								{
+									"key": "grant_type",
+									"value": "client_credentials",
+									"type": "text"
+								}
+							]
+						},
+						"url": {
+							"raw": "https://login.microsoftonline.com/0a046d9e-f03a-4446-bcdd-0923b009e5ce/oauth2/token",
+							"protocol": "https",
+							"host": [
+								"login",
+								"microsoftonline",
+								"com"
+							],
+							"path": [
+								"0a046d9e-f03a-4446-bcdd-0923b009e5ce",
+								"oauth2",
+								"token"
+							],
+							"query": [
+								{
+									"key": "client_id",
+									"value": "",
+									"disabled": true
+								},
+								{
+									"key": "client_secret",
+									"value": "",
+									"disabled": true
+								}
+							]
+						}
+					},
+					"response": []
 				}
 			],
-			"id": "c5bf0ba6-89a5-43bc-badb-95d93da2448f",
-			"protocolProfileBehavior": {
-				"disableBodyPruning": true
-			},
-			"request": {
-				"method": "POST",
-				"header": [
-					{
-						"key": "Content-Type",
-						"name": "Content-Type",
-						"type": "text",
-						"value": "application/json"
-					},
-					{
-						"key": "Host",
-						"type": "text",
-						"value": "login.microsoftonline.com"
-					},
-					{
-						"key": "Authorization",
-						"type": "text",
-						"value": "bearer {{access_token}}"
-					},
-					{
-						"key": "Access-Charset",
-						"type": "text",
-						"value": "utf-8"
-					}
-				],
-				"body": {
-					"mode": "urlencoded",
-					"urlencoded": [
-						{
-							"key": "client_id",
-							"value": "acbd7df9-1301-4ac7-83b0-a159847a84eb",
-							"type": "text"
-						},
-						{
-							"key": "client_secret",
-							"value": "7SHldRbn-J1.Jq.24GeBG-fAO_2Rk.NGjm",
-							"type": "text"
-						},
-						{
-							"key": "resource",
-							"value": "acbd7df9-1301-4ac7-83b0-a159847a84eb",
-							"type": "text"
-						},
-						{
-							"key": "grant_type",
-							"value": "client_credentials",
-							"type": "text"
-						}
-					]
-				},
-				"url": {
-					"raw": "https://login.microsoftonline.com/0a046d9e-f03a-4446-bcdd-0923b009e5ce/oauth2/token",
-					"protocol": "https",
-					"host": [
-						"login",
-						"microsoftonline",
-						"com"
-					],
-					"path": [
-						"0a046d9e-f03a-4446-bcdd-0923b009e5ce",
-						"oauth2",
-						"token"
-					],
-					"query": [
-						{
-							"key": "client_id",
-							"value": "",
-							"disabled": true
-						},
-						{
-							"key": "client_secret",
-							"value": "",
-							"disabled": true
-						}
-					]
-				}
-			},
-			"response": []
+			"id": "9aae6a5f-26ba-4291-9fe4-dc31637328a6"
 		},
 		{
 			"name": "Start automated security tests",
@@ -1518,7 +1519,7 @@
 		{
 			"listen": "prerequest",
 			"script": {
-				"id": "06a87e94-24e1-4d80-8544-7005bfe9d238",
+				"id": "8f92439b-4b66-4c9f-bac1-b900b32c1f64",
 				"type": "text/javascript",
 				"exec": [
 					""
@@ -1528,7 +1529,7 @@
 		{
 			"listen": "test",
 			"script": {
-				"id": "82d9a77e-3a51-4c9e-99c3-3ea42570b4eb",
+				"id": "ed7c3679-e954-4e3d-a28d-2c740b055557",
 				"type": "text/javascript",
 				"exec": [
 					""
@@ -1538,22 +1539,22 @@
 	],
 	"variable": [
 		{
-			"id": "05c28634-f742-4784-88f0-a50361a87bea",
+			"id": "b1ed8a18-ff50-4a59-a28d-06599f71847d",
 			"key": "port",
 			"value": "5001"
 		},
 		{
-			"id": "3f87ac53-6218-473b-8e42-dd44843701b9",
+			"id": "7afad793-a61e-4bf0-b14f-84bdfba7903e",
 			"key": "API-KEY",
 			"value": ""
 		},
 		{
-			"id": "d282c3a3-a31f-4b16-8c2e-10eb953696a9",
+			"id": "f8b09cc6-9de3-4dfb-bc46-03af2eb3b3fd",
 			"key": "YOUR-COLLECTION",
 			"value": ""
 		},
 		{
-			"id": "703ddd03-b4e3-4e93-98c5-6cd1c2d4f025",
+			"id": "1a38f2b7-c4fa-4b7b-b7b3-6be67d677c4f",
 			"key": "scanId",
 			"value": ""
 		}
