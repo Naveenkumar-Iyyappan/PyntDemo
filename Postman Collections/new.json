@@ -7,309 +7,6 @@
 	},
 	"item": [
 		{
-			"name": "New Folder",
-			"item": [
-				{
-					"name": "Experimental",
-					"item": [
-						{
-							"name": "Post to Event Grid",
-							"_postman_id": "5d351932-6ca0-4e0e-ab56-1fced1a7dfaf",
-							"protocolProfileBehavior": {
-								"disableBodyPruning": true
-							},
-							"request": {
-								"method": "POST",
-								"header": [
-									{
-										"key": "aeg-sas-key",
-										"value": "X0DlF9d4m9hM4pPcApWmKvOz0+G8WNrZE5vIuXDkmSs=",
-										"type": "text"
-									}
-								],
-								"body": {
-									"mode": "raw",
-									"raw": "[{\n        \"topic\": \"contractbalance\",\n        \"subject\": \"r test\",\n        \"eventType\": \"contractbalance\",\n        \"id\":\"1246\",\n        \"eventTime\":\"2021-06-21T21:03:07+00:00\",\n        \"data\":  {\n            \"BusinessEventId\": \"ContractBalanceBusinessEvent\",\n            \"ContractNumber\": \"0000004\",\n            \"ControlNumber\": -9223372036854775808,\n            \"EventId\": \"5926DB15-B84E-4E64-9790-DA0B2A5A71435\",\n            \"EventTime\": \"/Date(1655763854000)/\",\n            \"EventType\": \"U\",\n            \"LegalEntity\": \"US001\",\n            \"MajorVersion\": 0,\n            \"MinorVersion\": 0,\n            \"ModifiedDateTime\": \"/Date(1655763854000)/\",\n            \"SalesOrderNumber\": \"SOU1000001257\"\n        }\n    }]",
-									"options": {
-										"raw": {
-											"language": "json"
-										}
-									}
-								},
-								"url": "https://am-es-exp-eventgrid.centralus-1.eventgrid.azure.net/api/events"
-							},
-							"response": []
-						},
-						{
-							"name": "Process Contract Balance",
-							"_postman_id": "3a23d966-1e7d-4a3f-91d6-b6a70fb42796",
-							"protocolProfileBehavior": {
-								"disableBodyPruning": true
-							},
-							"request": {
-								"method": "POST",
-								"header": [
-									{
-										"key": "x-functions-key",
-										"value": "Y2SSG3uuQp2LFAucivxXWbZ2h7fCs_9lrNgqtTVZsoUVAzFu6DXfTg==",
-										"type": "text"
-									}
-								],
-								"body": {
-									"mode": "raw",
-									"raw": "{}",
-									"options": {
-										"raw": {
-											"language": "json"
-										}
-									}
-								},
-								"url": "https://am-vault-exp-process-contract-balance.azurewebsites.net/admin/functions/func-process-contract-balance"
-							},
-							"response": []
-						},
-						{
-							"name": "Recalculate Contract Balance",
-							"_postman_id": "01f1fd8a-3ac9-4c75-b9eb-ec4c20a4fd10",
-							"protocolProfileBehavior": {
-								"disableBodyPruning": true
-							},
-							"request": {
-								"method": "POST",
-								"header": [
-									{
-										"key": "x-functions-key",
-										"type": "text",
-										"value": "5r9IE7CXhMhn3xsCvNzxyHK6s49PeS-vI8AlPGSa8UPZAzFuSuLKjQ==",
-										"disabled": true
-									}
-								],
-								"body": {
-									"mode": "raw",
-									"raw": "{\n    \"ContractNumber\": \"0000004\",\n    \"EventId\": \"5926DB15-B84E-4E64-9790-DA0B2A5A71435\",\n    \"LegalEntity\": \"US001\"\n}",
-									"options": {
-										"raw": {
-											"language": "json"
-										}
-									}
-								},
-								"url": {
-									"raw": "https://am-vault-exp-recalculate-contract-balance.azurewebsites.net/api/func-recalculate-contract-balance?code=TQjjLO8Fn5BWIEA5pz9y3cSHTxdoWhlOQP9XmG04uBkGAzFuzxnoSQ==",
-									"protocol": "https",
-									"host": [
-										"am-vault-exp-recalculate-contract-balance",
-										"azurewebsites",
-										"net"
-									],
-									"path": [
-										"api",
-										"func-recalculate-contract-balance"
-									],
-									"query": [
-										{
-											"key": "code",
-											"value": "TQjjLO8Fn5BWIEA5pz9y3cSHTxdoWhlOQP9XmG04uBkGAzFuzxnoSQ=="
-										}
-									]
-								}
-							},
-							"response": []
-						},
-						{
-							"name": "Contract/recalculate-contract-balance",
-							"_postman_id": "85dd0877-b359-4f6e-8cc1-ab10678d0782",
-							"protocolProfileBehavior": {
-								"disableBodyPruning": true
-							},
-							"request": {
-								"method": "POST",
-								"header": [
-									{
-										"key": "Authorization",
-										"value": "Bearer eyJ0eXAiOiJKV1QiLCJhbGciOiJSUzI1NiIsImtpZCI6IjJaUXBKM1VwYmpBWVhZR2FYRUpsOGxWMFRPSSJ9.eyJhdWQiOiJhY2JkN2RmOS0xMzAxLTRhYzctODNiMC1hMTU5ODQ3YTg0ZWIiLCJpc3MiOiJodHRwczovL2xvZ2luLm1pY3Jvc29mdG9ubGluZS5jb20vMGEwNDZkOWUtZjAzYS00NDQ2LWJjZGQtMDkyM2IwMDllNWNlL3YyLjAiLCJpYXQiOjE2NjkwMTMxODMsIm5iZiI6MTY2OTAxMzE4MywiZXhwIjoxNjY5MDE3MDgzLCJhaW8iOiJFMlpnWURCMExiZGgxdnR5VjNsVlFPT2kveFVyQUE9PSIsImF6cCI6ImFjYmQ3ZGY5LTEzMDEtNGFjNy04M2IwLWExNTk4NDdhODRlYiIsImF6cGFjciI6IjEiLCJvaWQiOiJhYWQwYWQxZS1jMDJlLTQzMTYtYmJkYy02OWM0YWU1MmZiNzkiLCJyaCI6IjAuQVE0QW5tMEVDanJ3UmtTODNRa2pzQW5senZsOXZhd0JFOGRLZzdDaFdZUjZoT3NPQUFBLiIsInN1YiI6ImFhZDBhZDFlLWMwMmUtNDMxNi1iYmRjLTY5YzRhZTUyZmI3OSIsInRpZCI6IjBhMDQ2ZDllLWYwM2EtNDQ0Ni1iY2RkLTA5MjNiMDA5ZTVjZSIsInV0aSI6Ijg4dENHZlVZM2tLWXhRUFA0UzJNQUEiLCJ2ZXIiOiIyLjAifQ.RjPc8Lc22C6ryE4QRQEiT9amDbtNStX99-cLujyFX3I7vGz-i2D0S9bP6alHcasE9LcUbgR7l_cnp0SGoMyglTSauIMsD8EmkClkwcHwWobTFfAXHw9T3RPMgK9CqpTdM58qVjaxXWGN3wAwYRp72EPACqPp23vSJXA0MlYjXX8MdS17_qbq35NK1dr6hAZSnsYQ7R7flxizPVW76R1tOgbfpMSjs0I2fcoUa1SaibVO65cbM0oFxyx6gBi7kJlNWN63eOXtvsF59K_7Qub-r9Aa0ME4l_N-obOaHMEwndTBnygI6rSYjOFpOtEk8ddwjsa9Xm1qPJ4grslVhsm2Vw",
-										"type": "text"
-									}
-								],
-								"body": {
-									"mode": "raw",
-									"raw": "[{\n    \"ContractNumber\": \"0000004\",\n    \"indexName\": \"ContractAlternativeKey\",\n    \"LegalEntity\": \"US001\"\n}]",
-									"options": {
-										"raw": {
-											"language": "json"
-										}
-									}
-								},
-								"url": "https://vaultcontractsvcdev.azurewebsites.net/api/contract/recalculate-contract-balance"
-							},
-							"response": []
-						}
-					],
-					"_postman_id": "47aec244-9c11-4b6c-9b66-07a117f193f0",
-					"_postman_isSubFolder": true
-				},
-				{
-					"name": "Development",
-					"item": [
-						{
-							"name": "Post to Event Grid",
-							"_postman_id": "38039c42-a317-46b4-b745-bf4634d8ebb2",
-							"protocolProfileBehavior": {
-								"disableBodyPruning": true
-							},
-							"request": {
-								"method": "POST",
-								"header": [
-									{
-										"key": "aeg-sas-key",
-										"value": "X0DlF9d4m9hM4pPcApWmKvOz0+G8WNrZE5vIuXDkmSs=",
-										"type": "text"
-									}
-								],
-								"body": {
-									"mode": "raw",
-									"raw": "[{\n        \"topic\": \"contractbalance\",\n        \"subject\": \"r test\",\n        \"eventType\": \"contractbalance\",\n        \"id\":\"1246\",\n        \"eventTime\":\"2021-06-21T21:03:07+00:00\",\n        \"data\":  {\n            \"BusinessEventId\": \"ContractBalanceBusinessEvent\",\n            \"ContractNumber\": \"0000004\",\n            \"ControlNumber\": -9223372036854775808,\n            \"EventId\": \"5926DB15-B84E-4E64-9790-DA0B2A5A71435\",\n            \"EventTime\": \"/Date(1655763854000)/\",\n            \"EventType\": \"U\",\n            \"LegalEntity\": \"US001\",\n            \"MajorVersion\": 0,\n            \"MinorVersion\": 0,\n            \"ModifiedDateTime\": \"/Date(1655763854000)/\",\n            \"SalesOrderNumber\": \"SOU1000001257\"\n        }\n    }]",
-									"options": {
-										"raw": {
-											"language": "json"
-										}
-									}
-								},
-								"url": "https://am-es-exp-eventgrid.centralus-1.eventgrid.azure.net/api/events"
-							},
-							"response": []
-						},
-						{
-							"name": "Process Contract Balance",
-							"_postman_id": "57d58bf0-7833-4f0b-b06a-9b7c7894ea79",
-							"protocolProfileBehavior": {
-								"disableBodyPruning": true
-							},
-							"request": {
-								"method": "POST",
-								"header": [
-									{
-										"key": "x-functions-key",
-										"value": "Y2SSG3uuQp2LFAucivxXWbZ2h7fCs_9lrNgqtTVZsoUVAzFu6DXfTg==",
-										"type": "text"
-									}
-								],
-								"body": {
-									"mode": "raw",
-									"raw": "{}",
-									"options": {
-										"raw": {
-											"language": "json"
-										}
-									}
-								},
-								"url": "https://am-vault-exp-process-contract-balance.azurewebsites.net/admin/functions/func-process-contract-balance"
-							},
-							"response": []
-						},
-						{
-							"name": "Recalculate Contract Balance",
-							"_postman_id": "93c55cc2-ab29-47d7-a49d-1d6b57441f19",
-							"protocolProfileBehavior": {
-								"disableBodyPruning": true
-							},
-							"request": {
-								"method": "POST",
-								"header": [
-									{
-										"key": "x-functions-key",
-										"type": "text",
-										"value": "3Fm8qOVp29X29CSDAiU6mle4LioU6DGJnP49AazqsVt_AzFucmxzcQ==",
-										"disabled": true
-									}
-								],
-								"body": {
-									"mode": "raw",
-									"raw": "{\n    \"ContractNumber\": \"0000004\",\n    \"EventId\": \"5926DB15-B84E-4E64-9790-DA0B2A5A71435\",\n    \"LegalEntity\": \"US001\"\n}",
-									"options": {
-										"raw": {
-											"language": "json"
-										}
-									}
-								},
-								"url": {
-									"raw": "https://am-vault-dev-recalculate-contract-balance.azurewebsites.net/admin/functions/func-recalculate-contract-balance?code=3Fm8qOVp29X29CSDAiU6mle4LioU6DGJnP49AazqsVt_AzFucmxzcQ==",
-									"protocol": "https",
-									"host": [
-										"am-vault-dev-recalculate-contract-balance",
-										"azurewebsites",
-										"net"
-									],
-									"path": [
-										"admin",
-										"functions",
-										"func-recalculate-contract-balance"
-									],
-									"query": [
-										{
-											"key": "code",
-											"value": "3Fm8qOVp29X29CSDAiU6mle4LioU6DGJnP49AazqsVt_AzFucmxzcQ=="
-										}
-									]
-								}
-							},
-							"response": []
-						},
-						{
-							"name": "Contract/recalculate-contract-balance",
-							"_postman_id": "8309b4dd-e7ef-4be6-8b4d-3f6602675b83",
-							"protocolProfileBehavior": {
-								"disableBodyPruning": true
-							},
-							"request": {
-								"method": "POST",
-								"header": [
-									{
-										"key": "Authorization",
-										"value": "Bearer eyJ0eXAiOiJKV1QiLCJhbGciOiJSUzI1NiIsImtpZCI6IjJaUXBKM1VwYmpBWVhZR2FYRUpsOGxWMFRPSSJ9.eyJhdWQiOiJhY2JkN2RmOS0xMzAxLTRhYzctODNiMC1hMTU5ODQ3YTg0ZWIiLCJpc3MiOiJodHRwczovL2xvZ2luLm1pY3Jvc29mdG9ubGluZS5jb20vMGEwNDZkOWUtZjAzYS00NDQ2LWJjZGQtMDkyM2IwMDllNWNlL3YyLjAiLCJpYXQiOjE2NjkwMTA0NTEsIm5iZiI6MTY2OTAxMDQ1MSwiZXhwIjoxNjY5MDE0MzUxLCJhaW8iOiJFMlpnWVBqZ1ZONHdvemw4aVZIdGhsMytxM1EzQUFBPSIsImF6cCI6ImFjYmQ3ZGY5LTEzMDEtNGFjNy04M2IwLWExNTk4NDdhODRlYiIsImF6cGFjciI6IjEiLCJvaWQiOiJhYWQwYWQxZS1jMDJlLTQzMTYtYmJkYy02OWM0YWU1MmZiNzkiLCJyaCI6IjAuQVE0QW5tMEVDanJ3UmtTODNRa2pzQW5senZsOXZhd0JFOGRLZzdDaFdZUjZoT3NPQUFBLiIsInN1YiI6ImFhZDBhZDFlLWMwMmUtNDMxNi1iYmRjLTY5YzRhZTUyZmI3OSIsInRpZCI6IjBhMDQ2ZDllLWYwM2EtNDQ0Ni1iY2RkLTA5MjNiMDA5ZTVjZSIsInV0aSI6IlBQWkpXNXFpdFVLWE5fZ2lEczVrQUEiLCJ2ZXIiOiIyLjAifQ.XHwrvT5--JxPoRTLhHr1Wn3dQzeFz1Twm2G3M3INd6y3dWtB5f_GvSc-DDITA6wT21BIEbFknN94rxcY2pi6qigc9euK0gWC6VcGa18-r4XWa_XqP3Dfz7ucRNyfZE5ZPwbaHJKT5WfXkL4Hd2L_iYyd0OPoAZAVgtGZlNZsCHDj9Q7_kQkqSFbKJkPBJYHPBLM2AMD_2y9qJhamrhsUzAqtLoGIFCnAYN_CWyeYrNDp58FicGZfn0xH5wHL3ojpCeMw6wo1dwvGke1zSmPAYAwYOJVP627YxYAdMdFDd2nRXz-sGDGKVHUhNRe8ijCyUC-clSwq4gcIz5YToz82jw",
-										"type": "text"
-									}
-								],
-								"body": {
-									"mode": "raw",
-									"raw": "[{\n    \"ContractNumber\": \"0000004\",\n    \"indexName\": \"ContractAlternativeKey\",\n    \"LegalEntity\": \"US001\"\n}]",
-									"options": {
-										"raw": {
-											"language": "json"
-										}
-									}
-								},
-								"url": {
-									"raw": "https://vaultcontractsvcdev.azurewebsites.net/api/contract/recalculate-contract-balance",
-									"protocol": "https",
-									"host": [
-										"vaultcontractsvcdev",
-										"azurewebsites",
-										"net"
-									],
-									"path": [
-										"api",
-										"contract",
-										"recalculate-contract-balance"
-									],
-									"query": [
-										{
-											"key": "Authorization",
-											"value": "Bearer eyJ0eXAiOiJKV1QiLCJhbGciOiJSUzI1NiIsImtpZCI6IjJaUXBKM1VwYmpBWVhZR2FYRUpsOGxWMFRPSSJ9.eyJhdWQiOiJhY2JkN2RmOS0xMzAxLTRhYzctODNiMC1hMTU5ODQ3YTg0ZWIiLCJpc3MiOiJodHRwczovL2xvZ2luLm1pY3Jvc29mdG9ubGluZS5jb20vMGEwNDZkOWUtZjAzYS00NDQ2LWJjZGQtMDkyM2IwMDllNWNlL3YyLjAiLCJpYXQiOjE2NjkwMTA0NTEsIm5iZiI6MTY2OTAxMDQ1MSwiZXhwIjoxNjY5MDE0MzUxLCJhaW8iOiJFMlpnWVBqZ1ZONHdvemw4aVZIdGhsMytxM1EzQUFBPSIsImF6cCI6ImFjYmQ3ZGY5LTEzMDEtNGFjNy04M2IwLWExNTk4NDdhODRlYiIsImF6cGFjciI6IjEiLCJvaWQiOiJhYWQwYWQxZS1jMDJlLTQzMTYtYmJkYy02OWM0YWU1MmZiNzkiLCJyaCI6IjAuQVE0QW5tMEVDanJ3UmtTODNRa2pzQW5senZsOXZhd0JFOGRLZzdDaFdZUjZoT3NPQUFBLiIsInN1YiI6ImFhZDBhZDFlLWMwMmUtNDMxNi1iYmRjLTY5YzRhZTUyZmI3OSIsInRpZCI6IjBhMDQ2ZDllLWYwM2EtNDQ0Ni1iY2RkLTA5MjNiMDA5ZTVjZSIsInV0aSI6IlBQWkpXNXFpdFVLWE5fZ2lEczVrQUEiLCJ2ZXIiOiIyLjAifQ.XHwrvT5--JxPoRTLhHr1Wn3dQzeFz1Twm2G3M3INd6y3dWtB5f_GvSc-DDITA6wT21BIEbFknN94rxcY2pi6qigc9euK0gWC6VcGa18-r4XWa_XqP3Dfz7ucRNyfZE5ZPwbaHJKT5WfXkL4Hd2L_iYyd0OPoAZAVgtGZlNZsCHDj9Q7_kQkqSFbKJkPBJYHPBLM2AMD_2y9qJhamrhsUzAqtLoGIFCnAYN_CWyeYrNDp58FicGZfn0xH5wHL3ojpCeMw6wo1dwvGke1zSmPAYAwYOJVP627YxYAdMdFDd2nRXz-sGDGKVHUhNRe8ijCyUC-clSwq4gcIz5YToz82jw",
-											"disabled": true
-										}
-									]
-								}
-							},
-							"response": []
-						}
-					],
-					"_postman_id": "7baec67c-dc13-46ed-8a8e-3e2f9c63d92d",
-					"_postman_isSubFolder": true
-				}
-			],
-			"_postman_id": "d7d5095c-34da-4a56-9540-f4ca8435a335"
-		},
-		{
 			"name": "Start automated security tests",
 			"event": [
 				{
@@ -346,7 +43,7 @@
 					}
 				}
 			],
-			"_postman_id": "64b8a681-d56f-4dfe-930f-72cfdbf3361d",
+			"id": "64b8a681-d56f-4dfe-930f-72cfdbf3361d",
 			"protocolProfileBehavior": {
 				"disableBodyPruning": true
 			},
@@ -360,10 +57,7 @@
 				],
 				"body": {
 					"mode": "raw",
-					"raw": "{\n  \"apiKey\": \"{{API-KEY}}\",\n  \"collectionToTest\": \"{{YOUR-COLLECTION}}\",\n   \"environmentName\": \"{{envName}}\"\n}",
-					"options": {
-						"raw": {}
-					}
+					"raw": "{\n  \"apiKey\": \"{{API-KEY}}\",\n  \"collectionToTest\": \"{{YOUR-COLLECTION}}\",\n   \"environmentName\": \"{{envName}}\"\n}"
 				},
 				"url": "http://localhost:5001/api/run_scan"
 			},
@@ -414,7 +108,7 @@
 					}
 				}
 			],
-			"_postman_id": "e1d5f3e4-c6c8-41a7-9a27-e77182cd88ac",
+			"id": "e1d5f3e4-c6c8-41a7-9a27-e77182cd88ac",
 			"protocolProfileBehavior": {
 				"disableBodyPruning": true
 			},
@@ -476,7 +170,7 @@
 					}
 				}
 			],
-			"_postman_id": "59099b8b-0a8e-431b-ba96-aa9dec573b5f",
+			"id": "59099b8b-0a8e-431b-ba96-aa9dec573b5f",
 			"protocolProfileBehavior": {
 				"disableBodyPruning": true
 			},
@@ -542,7 +236,7 @@
 					}
 				}
 			],
-			"_postman_id": "1e60ebe6-3d88-42fc-9f9e-d379977f3030",
+			"id": "1e60ebe6-3d88-42fc-9f9e-d379977f3030",
 			"protocolProfileBehavior": {
 				"disableBodyPruning": true
 			},
@@ -608,7 +302,7 @@
 					}
 				}
 			],
-			"_postman_id": "f50927e2-d554-4cc6-bea8-c2bae781fc45",
+			"id": "f50927e2-d554-4cc6-bea8-c2bae781fc45",
 			"protocolProfileBehavior": {
 				"disableBodyPruning": true
 			},
@@ -674,7 +368,7 @@
 					}
 				}
 			],
-			"_postman_id": "8e813654-d341-4302-9e75-44f14fc4575b",
+			"id": "8e813654-d341-4302-9e75-44f14fc4575b",
 			"protocolProfileBehavior": {
 				"disableBodyPruning": true
 			},
@@ -740,7 +434,7 @@
 					}
 				}
 			],
-			"_postman_id": "01a4326d-0515-44a3-b3b1-a78fcbdef3cf",
+			"id": "01a4326d-0515-44a3-b3b1-a78fcbdef3cf",
 			"protocolProfileBehavior": {
 				"disableBodyPruning": true
 			},
@@ -806,7 +500,7 @@
 					}
 				}
 			],
-			"_postman_id": "3dbc5166-6f01-4975-909a-bfe224b2e443",
+			"id": "3dbc5166-6f01-4975-909a-bfe224b2e443",
 			"protocolProfileBehavior": {
 				"disableBodyPruning": true
 			},
@@ -872,7 +566,7 @@
 					}
 				}
 			],
-			"_postman_id": "6e061c1f-c16d-4432-9f1f-27d99088d18d",
+			"id": "6e061c1f-c16d-4432-9f1f-27d99088d18d",
 			"protocolProfileBehavior": {
 				"disableBodyPruning": true
 			},
@@ -938,7 +632,7 @@
 					}
 				}
 			],
-			"_postman_id": "8a1bc5c4-6863-4a94-8487-43b6e52edd59",
+			"id": "8a1bc5c4-6863-4a94-8487-43b6e52edd59",
 			"protocolProfileBehavior": {
 				"disableBodyPruning": true
 			},
@@ -1004,7 +698,7 @@
 					}
 				}
 			],
-			"_postman_id": "d36194ca-ec8f-4905-b98e-4ebff5cdb676",
+			"id": "d36194ca-ec8f-4905-b98e-4ebff5cdb676",
 			"protocolProfileBehavior": {
 				"disableBodyPruning": true
 			},
@@ -1070,7 +764,7 @@
 					}
 				}
 			],
-			"_postman_id": "19273d43-4269-41b8-a932-4a6648a347b2",
+			"id": "19273d43-4269-41b8-a932-4a6648a347b2",
 			"protocolProfileBehavior": {
 				"disableBodyPruning": true
 			},
@@ -1136,7 +830,7 @@
 					}
 				}
 			],
-			"_postman_id": "1a00f84d-c94f-46bc-9585-d54003bda4d8",
+			"id": "1a00f84d-c94f-46bc-9585-d54003bda4d8",
 			"protocolProfileBehavior": {
 				"disableBodyPruning": true
 			},
@@ -1181,7 +875,7 @@
 					}
 				}
 			],
-			"_postman_id": "03621e4c-3954-4da6-bb66-281ead6ea229",
+			"id": "03621e4c-3954-4da6-bb66-281ead6ea229",
 			"protocolProfileBehavior": {
 				"disableBodyPruning": true
 			},
@@ -1688,7 +1382,7 @@
 					}
 				}
 			],
-			"_postman_id": "e7563527-a767-4625-8a75-c38c172967b1",
+			"id": "e7563527-a767-4625-8a75-c38c172967b1",
 			"protocolProfileBehavior": {
 				"disableBodyPruning": true
 			},
@@ -1741,28 +1435,24 @@
 	],
 	"variable": [
 		{
-			"id": "0e097842-3a31-4bd8-88bf-af74bab9b07d",
+			"id": "82f1076b-927d-4e95-b9a5-73e4600427b6",
 			"key": "port",
-			"value": "5001",
-			"type": "string"
+			"value": "5001"
 		},
 		{
-			"id": "292a9b94-9792-462b-acce-fbd573b21f30",
+			"id": "13b0cf07-b0a1-4010-aa7b-6ec3647bf66f",
 			"key": "API-KEY",
-			"value": "",
-			"type": "string"
+			"value": ""
 		},
 		{
-			"id": "f060bbff-5c32-4ca7-be11-1ab0678d51da",
+			"id": "ba5cda11-ab96-4757-a98e-bff088dafb00",
 			"key": "YOUR-COLLECTION",
-			"value": "",
-			"type": "string"
+			"value": ""
 		},
 		{
-			"id": "622e734e-3fcd-4f59-8e06-3c3f4cb1b7f5",
+			"id": "f7b237d4-7ba2-4ae8-9b0f-84c004fca7d1",
 			"key": "scanId",
-			"value": "",
-			"type": "string"
+			"value": ""
 		}
 	]
 }
