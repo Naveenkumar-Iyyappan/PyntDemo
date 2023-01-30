@@ -8,107 +8,106 @@
 	"item": [
 		{
 			"name": "New Folder",
-			"item": [
+			"item": [],
+			"id": "9aae6a5f-26ba-4291-9fe4-dc31637328a6"
+		},
+		{
+			"name": "Vault?",
+			"event": [
 				{
-					"name": "Vault?",
-					"event": [
-						{
-							"listen": "test",
-							"script": {
-								"type": "text/javascript",
-								"exec": [
-									"var jsonData = JSON.parse(responseBody);",
-									"postman.setEnvironmentVariable(\"datahub_access_token\", jsonData.access_token)"
-								],
-								"id": "ce81f092-bf2f-4b99-af7f-e1b1259ad867"
-							}
-						}
-					],
-					"id": "c5bf0ba6-89a5-43bc-badb-95d93da2448f",
-					"protocolProfileBehavior": {
-						"disableBodyPruning": true
-					},
-					"request": {
-						"method": "POST",
-						"header": [
-							{
-								"key": "Content-Type",
-								"name": "Content-Type",
-								"type": "text",
-								"value": "application/json"
-							},
-							{
-								"key": "Host",
-								"type": "text",
-								"value": "login.microsoftonline.com"
-							},
-							{
-								"key": "Authorization",
-								"type": "text",
-								"value": "bearer {{access_token}}"
-							},
-							{
-								"key": "Access-Charset",
-								"type": "text",
-								"value": "utf-8"
-							}
+					"listen": "test",
+					"script": {
+						"type": "text/javascript",
+						"exec": [
+							"var jsonData = JSON.parse(responseBody);",
+							"postman.setEnvironmentVariable(\"datahub_access_token\", jsonData.access_token)"
 						],
-						"body": {
-							"mode": "urlencoded",
-							"urlencoded": [
-								{
-									"key": "client_id",
-									"value": "acbd7df9-1301-4ac7-83b0-a159847a84eb",
-									"type": "text"
-								},
-								{
-									"key": "client_secret",
-									"value": "7SHldRbn-J1.Jq.24GeBG-fAO_2Rk.NGjm",
-									"type": "text"
-								},
-								{
-									"key": "resource",
-									"value": "acbd7df9-1301-4ac7-83b0-a159847a84eb",
-									"type": "text"
-								},
-								{
-									"key": "grant_type",
-									"value": "client_credentials",
-									"type": "text"
-								}
-							]
-						},
-						"url": {
-							"raw": "https://login.microsoftonline.com/0a046d9e-f03a-4446-bcdd-0923b009e5ce/oauth2/token",
-							"protocol": "https",
-							"host": [
-								"login",
-								"microsoftonline",
-								"com"
-							],
-							"path": [
-								"0a046d9e-f03a-4446-bcdd-0923b009e5ce",
-								"oauth2",
-								"token"
-							],
-							"query": [
-								{
-									"key": "client_id",
-									"value": "",
-									"disabled": true
-								},
-								{
-									"key": "client_secret",
-									"value": "",
-									"disabled": true
-								}
-							]
-						}
-					},
-					"response": []
+						"id": "ce81f092-bf2f-4b99-af7f-e1b1259ad867"
+					}
 				}
 			],
-			"id": "9aae6a5f-26ba-4291-9fe4-dc31637328a6"
+			"id": "c5bf0ba6-89a5-43bc-badb-95d93da2448f",
+			"protocolProfileBehavior": {
+				"disableBodyPruning": true
+			},
+			"request": {
+				"method": "POST",
+				"header": [
+					{
+						"key": "Content-Type",
+						"name": "Content-Type",
+						"type": "text",
+						"value": "application/json"
+					},
+					{
+						"key": "Host",
+						"type": "text",
+						"value": "login.microsoftonline.com"
+					},
+					{
+						"key": "Authorization",
+						"type": "text",
+						"value": "bearer {{access_token}}"
+					},
+					{
+						"key": "Access-Charset",
+						"type": "text",
+						"value": "utf-8"
+					}
+				],
+				"body": {
+					"mode": "urlencoded",
+					"urlencoded": [
+						{
+							"key": "client_id",
+							"value": "acbd7df9-1301-4ac7-83b0-a159847a84eb",
+							"type": "text"
+						},
+						{
+							"key": "client_secret",
+							"value": "7SHldRbn-J1.Jq.24GeBG-fAO_2Rk.NGjm",
+							"type": "text"
+						},
+						{
+							"key": "resource",
+							"value": "acbd7df9-1301-4ac7-83b0-a159847a84eb",
+							"type": "text"
+						},
+						{
+							"key": "grant_type",
+							"value": "client_credentials",
+							"type": "text"
+						}
+					]
+				},
+				"url": {
+					"raw": "https://login.microsoftonline.com/0a046d9e-f03a-4446-bcdd-0923b009e5ce/oauth2/token",
+					"protocol": "https",
+					"host": [
+						"login",
+						"microsoftonline",
+						"com"
+					],
+					"path": [
+						"0a046d9e-f03a-4446-bcdd-0923b009e5ce",
+						"oauth2",
+						"token"
+					],
+					"query": [
+						{
+							"key": "client_id",
+							"value": "",
+							"disabled": true
+						},
+						{
+							"key": "client_secret",
+							"value": "",
+							"disabled": true
+						}
+					]
+				}
+			},
+			"response": []
 		},
 		{
 			"name": "Start automated security tests",
@@ -1539,22 +1538,22 @@
 	],
 	"variable": [
 		{
-			"id": "e563e50f-c1bd-472d-b516-c89afd3c8687",
+			"id": "05c28634-f742-4784-88f0-a50361a87bea",
 			"key": "port",
 			"value": "5001"
 		},
 		{
-			"id": "8c5a4138-d7f7-4f7c-a08b-bede8d4d2b6a",
+			"id": "3f87ac53-6218-473b-8e42-dd44843701b9",
 			"key": "API-KEY",
 			"value": ""
 		},
 		{
-			"id": "3534f1c0-7bbe-4ea8-bb3c-f33526cb3348",
+			"id": "d282c3a3-a31f-4b16-8c2e-10eb953696a9",
 			"key": "YOUR-COLLECTION",
 			"value": ""
 		},
 		{
-			"id": "708b7f5b-dc99-4e3e-a9c8-3b1c9e5ed292",
+			"id": "703ddd03-b4e3-4e93-98c5-6cd1c2d4f025",
 			"key": "scanId",
 			"value": ""
 		}
