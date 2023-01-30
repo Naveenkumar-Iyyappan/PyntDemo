@@ -7,6 +7,11 @@
 	},
 	"item": [
 		{
+			"name": "New Folder",
+			"item": [],
+			"id": "9aae6a5f-26ba-4291-9fe4-dc31637328a6"
+		},
+		{
 			"name": "Start automated security tests",
 			"event": [
 				{
@@ -1435,22 +1440,22 @@
 	],
 	"variable": [
 		{
-			"id": "82f1076b-927d-4e95-b9a5-73e4600427b6",
+			"id": "123f8fef-70c7-416d-b993-0fab24cc8fba",
 			"key": "port",
 			"value": "5001"
 		},
 		{
-			"id": "13b0cf07-b0a1-4010-aa7b-6ec3647bf66f",
+			"id": "6f178844-ecef-40d1-bb68-56e662971f53",
 			"key": "API-KEY",
 			"value": ""
 		},
 		{
-			"id": "ba5cda11-ab96-4757-a98e-bff088dafb00",
+			"id": "3946cf04-2479-46d2-9d0a-640141e7977d",
 			"key": "YOUR-COLLECTION",
 			"value": ""
 		},
 		{
-			"id": "f7b237d4-7ba2-4ae8-9b0f-84c004fca7d1",
+			"id": "fb2bb8b7-f476-4c4c-8051-f1c7d4d62434",
 			"key": "scanId",
 			"value": ""
 		}
