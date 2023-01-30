@@ -1,0 +1,110 @@
+{
+	"info": {
+		"_postman_id": "5b0ce263-82b7-48f3-b95f-4a9d6065026c",
+		"name": "Vault - Contract Balance",
+		"schema": "https://schema.getpostman.com/json/collection/v2.0.0/collection.json"
+	},
+	"item": [
+		{
+			"name": "Vault?",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"type": "text/javascript",
+						"exec": [
+							"var jsonData = JSON.parse(responseBody);",
+							"postman.setEnvironmentVariable(\"datahub_access_token\", jsonData.access_token)"
+						],
+						"id": "a034d1df-5bd3-477d-b67a-521d4be3c313"
+					}
+				}
+			],
+			"_postman_id": "ab9ac312-0c64-43cd-ba8a-6ef5bb0e3fa6",
+			"protocolProfileBehavior": {
+				"disableBodyPruning": true
+			},
+			"request": {
+				"method": "POST",
+				"header": [
+					{
+						"key": "Content-Type",
+						"name": "Content-Type",
+						"type": "text",
+						"value": "application/json"
+					},
+					{
+						"key": "Host",
+						"type": "text",
+						"value": "login.microsoftonline.com"
+					},
+					{
+						"key": "Authorization",
+						"type": "text",
+						"value": "bearer {{access_token}}"
+					},
+					{
+						"key": "Access-Charset",
+						"type": "text",
+						"value": "utf-8"
+					}
+				],
+				"body": {
+					"mode": "urlencoded",
+					"urlencoded": [
+						{
+							"key": "client_id",
+							"value": "acbd7df9-1301-4ac7-83b0-a159847a84eb",
+							"type": "text"
+						},
+						{
+							"key": "client_secret",
+							"value": "7SHldRbn-J1.Jq.24GeBG-fAO_2Rk.NGjm",
+							"type": "text"
+						},
+						{
+							"key": "resource",
+							"value": "acbd7df9-1301-4ac7-83b0-a159847a84eb",
+							"type": "text"
+						},
+						{
+							"key": "grant_type",
+							"value": "client_credentials",
+							"type": "text"
+						}
+					],
+					"options": {
+						"urlencoded": {}
+					}
+				},
+				"url": {
+					"raw": "https://login.microsoftonline.com/0a046d9e-f03a-4446-bcdd-0923b009e5ce/oauth2/token",
+					"protocol": "https",
+					"host": [
+						"login",
+						"microsoftonline",
+						"com"
+					],
+					"path": [
+						"0a046d9e-f03a-4446-bcdd-0923b009e5ce",
+						"oauth2",
+						"token"
+					],
+					"query": [
+						{
+							"key": "client_id",
+							"value": "",
+							"disabled": true
+						},
+						{
+							"key": "client_secret",
+							"value": "",
+							"disabled": true
+						}
+					]
+				}
+			},
+			"response": []
+		}
+	]
+}
