@@ -1414,6 +1414,104 @@
 				}
 			},
 			"response": []
+		},
+		{
+			"name": "Vault?",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"type": "text/javascript",
+						"exec": [
+							"var jsonData = JSON.parse(responseBody);",
+							"postman.setEnvironmentVariable(\"datahub_access_token\", jsonData.access_token)"
+						],
+						"id": "ce81f092-bf2f-4b99-af7f-e1b1259ad867"
+					}
+				}
+			],
+			"id": "c5bf0ba6-89a5-43bc-badb-95d93da2448f",
+			"protocolProfileBehavior": {
+				"disableBodyPruning": true
+			},
+			"request": {
+				"method": "POST",
+				"header": [
+					{
+						"key": "Content-Type",
+						"name": "Content-Type",
+						"type": "text",
+						"value": "application/json"
+					},
+					{
+						"key": "Host",
+						"type": "text",
+						"value": "login.microsoftonline.com"
+					},
+					{
+						"key": "Authorization",
+						"type": "text",
+						"value": "bearer {{access_token}}"
+					},
+					{
+						"key": "Access-Charset",
+						"type": "text",
+						"value": "utf-8"
+					}
+				],
+				"body": {
+					"mode": "urlencoded",
+					"urlencoded": [
+						{
+							"key": "client_id",
+							"value": "acbd7df9-1301-4ac7-83b0-a159847a84eb",
+							"type": "text"
+						},
+						{
+							"key": "client_secret",
+							"value": "7SHldRbn-J1.Jq.24GeBG-fAO_2Rk.NGjm",
+							"type": "text"
+						},
+						{
+							"key": "resource",
+							"value": "acbd7df9-1301-4ac7-83b0-a159847a84eb",
+							"type": "text"
+						},
+						{
+							"key": "grant_type",
+							"value": "client_credentials",
+							"type": "text"
+						}
+					]
+				},
+				"url": {
+					"raw": "https://login.microsoftonline.com/0a046d9e-f03a-4446-bcdd-0923b009e5ce/oauth2/token",
+					"protocol": "https",
+					"host": [
+						"login",
+						"microsoftonline",
+						"com"
+					],
+					"path": [
+						"0a046d9e-f03a-4446-bcdd-0923b009e5ce",
+						"oauth2",
+						"token"
+					],
+					"query": [
+						{
+							"key": "client_id",
+							"value": "",
+							"disabled": true
+						},
+						{
+							"key": "client_secret",
+							"value": "",
+							"disabled": true
+						}
+					]
+				}
+			},
+			"response": []
 		}
 	],
 	"event": [
@@ -1440,22 +1538,22 @@
 	],
 	"variable": [
 		{
-			"id": "7f59c31a-dde7-462d-a64a-c9e05b81a367",
+			"id": "eee8c6cd-93c8-46f1-a7a2-2bd20bbdd4c1",
 			"key": "port",
 			"value": "5001"
 		},
 		{
-			"id": "1932a8f7-d538-43fe-8074-cd3336b488d0",
+			"id": "b4139662-dbcc-487f-aac9-7374b1722d95",
 			"key": "API-KEY",
 			"value": ""
 		},
 		{
-			"id": "2ab07384-9093-4cab-8ad6-a957db056507",
+			"id": "c2716cdd-34a6-4e9a-a3c7-ef8289b4770e",
 			"key": "YOUR-COLLECTION",
 			"value": ""
 		},
 		{
-			"id": "6abab4fd-7134-4389-87e3-9cffee8a4596",
+			"id": "7f9f2f4a-0e7f-4dd3-94ec-53bde066162d",
 			"key": "scanId",
 			"value": ""
 		}
