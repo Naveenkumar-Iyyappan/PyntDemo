@@ -1415,7 +1415,7 @@
 		{
 			"listen": "prerequest",
 			"script": {
-				"id": "e2a866f7-38f8-4ec6-9137-d29f164d1e2c",
+				"id": "8f92439b-4b66-4c9f-bac1-b900b32c1f64",
 				"type": "text/javascript",
 				"exec": [
 					""
@@ -1425,7 +1425,7 @@
 		{
 			"listen": "test",
 			"script": {
-				"id": "04f9556f-5f5c-41d2-9358-674753f40a1f",
+				"id": "ed7c3679-e954-4e3d-a28d-2c740b055557",
 				"type": "text/javascript",
 				"exec": [
 					""
@@ -1435,22 +1435,22 @@
 	],
 	"variable": [
 		{
-			"id": "af42d32f-65f1-43ac-8a06-80e3147246b5",
+			"id": "e85d1955-2a2e-492d-b57a-911d8f6958d8",
 			"key": "port",
 			"value": "5001"
 		},
 		{
-			"id": "b5147224-3c73-4d8f-92ea-9cefbd5729fe",
+			"id": "6d0d967c-5248-44f3-90c6-1166f6c5afea",
 			"key": "API-KEY",
 			"value": ""
 		},
 		{
-			"id": "2090555e-1c2a-4e06-bedb-0e470449592e",
+			"id": "84c7af7b-cf03-44f8-81e0-36962bf549c4",
 			"key": "YOUR-COLLECTION",
 			"value": ""
 		},
 		{
-			"id": "c86fa63e-cdba-4803-8dc2-388712181bd4",
+			"id": "01200c76-8743-4864-8446-da11646e168b",
 			"key": "scanId",
 			"value": ""
 		}
