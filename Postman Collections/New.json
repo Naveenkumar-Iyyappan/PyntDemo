@@ -275,6 +275,72 @@
 			"response": []
 		},
 		{
+			"name": "Broken User Authentication (OWASP-10 API2)",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"id": "22204920-9fcd-4a51-beab-87a7bb61e886",
+						"exec": [
+							"results = pm.response.json();",
+							"if (pm.response.code == 202) {",
+							"\tpm.test(\"\", () => {throw new Error(results)});",
+							"\treturn",
+							"}",
+							"if(Object.keys(results).length > 0 ){",
+							"\tfor(var attackType in results){",
+							"\t\tcases = results[attackType]",
+							"\t\tfor(var i in cases) {",
+							"\t\t\tpm.test(attackType, () => {throw new Error(cases[i])});",
+							"\t\t}",
+							"\t}",
+							"}",
+							"else{",
+							"\tpm.test(\"\")",
+							"}"
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"id": "4585b73c-975f-4a29-bf37-94b18a4f4021",
+			"protocolProfileBehavior": {
+				"disableBodyPruning": true
+			},
+			"request": {
+				"method": "GET",
+				"header": [
+					{
+						"key": "Content-Type",
+						"value": "application/json"
+					}
+				],
+				"url": {
+					"raw": "http://localhost:5001/api/results?apitype=2&scanId={{scanId}}",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "5001",
+					"path": [
+						"api",
+						"results"
+					],
+					"query": [
+						{
+							"key": "apitype",
+							"value": "2"
+						},
+						{
+							"key": "scanId",
+							"value": "{{scanId}}"
+						}
+					]
+				}
+			},
+			"response": []
+		},
+		{
 			"name": "Scan Results",
 			"event": [
 				{
@@ -505,22 +571,22 @@
 	],
 	"variable": [
 		{
-			"id": "5b42f4fc-acbc-465b-afc0-539d593a8a6d",
+			"id": "feaeb0dc-9aff-4f51-a1e1-62f3d5404732",
 			"key": "PYNT-PORT",
 			"value": "5001"
 		},
 		{
-			"id": "aab65128-ed05-49a8-bda1-1618632e933d",
+			"id": "e7179135-4b8c-45e9-b9cb-b1b82cca61e8",
 			"key": "API-KEY",
 			"value": ""
 		},
 		{
-			"id": "b947a2ce-90e4-465f-85b0-852d171035dc",
+			"id": "519e5f61-f846-460d-948d-0077513bee0e",
 			"key": "YOUR-COLLECTION",
 			"value": ""
 		},
 		{
-			"id": "0b77fdab-dc1d-4a10-883d-10b007faabf2",
+			"id": "b1c1cdd3-074c-4747-aa5c-e7c3ec076681",
 			"key": "scanId",
 			"value": ""
 		}
