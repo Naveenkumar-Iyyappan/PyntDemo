@@ -209,6 +209,72 @@
 			"response": []
 		},
 		{
+			"name": "Broken Object Level Authorization (OWASP-10 API1)",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"id": "727383d0-3a80-43bf-a7e9-a5577c8abf4a",
+						"exec": [
+							"results = pm.response.json();",
+							"if (pm.response.code == 202) {",
+							"\tpm.test(\"\", () => {throw new Error(results)});",
+							"\treturn",
+							"}",
+							"if(Object.keys(results).length > 0 ){",
+							"\tfor(var attackType in results){",
+							"\t\tcases = results[attackType]",
+							"\t\tfor(var i in cases) {",
+							"\t\t\tpm.test(attackType, () => {throw new Error(cases[i])});",
+							"\t\t}",
+							"\t}",
+							"}",
+							"else{",
+							"\tpm.test(\"\")",
+							"}"
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"id": "91ced9da-b16b-4d74-bc39-863d69048dce",
+			"protocolProfileBehavior": {
+				"disableBodyPruning": true
+			},
+			"request": {
+				"method": "GET",
+				"header": [
+					{
+						"key": "Content-Type",
+						"value": "application/json"
+					}
+				],
+				"url": {
+					"raw": "http://localhost:5001/api/results?apitype=1&scanId={{scanId}}",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "5001",
+					"path": [
+						"api",
+						"results"
+					],
+					"query": [
+						{
+							"key": "apitype",
+							"value": "1"
+						},
+						{
+							"key": "scanId",
+							"value": "{{scanId}}"
+						}
+					]
+				}
+			},
+			"response": []
+		},
+		{
 			"name": "Scan Results",
 			"event": [
 				{
@@ -415,12 +481,12 @@
 			"response": []
 		},
 		{
-			"name": "Broken Object Level Authorization (OWASP-10 API1)",
+			"name": "Broken User Authentication (OWASP-10 API2)",
 			"event": [
 				{
 					"listen": "test",
 					"script": {
-						"id": "727383d0-3a80-43bf-a7e9-a5577c8abf4a",
+						"id": "22204920-9fcd-4a51-beab-87a7bb61e886",
 						"exec": [
 							"results = pm.response.json();",
 							"if (pm.response.code == 202) {",
@@ -443,7 +509,7 @@
 					}
 				}
 			],
-			"id": "91ced9da-b16b-4d74-bc39-863d69048dce",
+			"id": "4585b73c-975f-4a29-bf37-94b18a4f4021",
 			"protocolProfileBehavior": {
 				"disableBodyPruning": true
 			},
@@ -456,7 +522,7 @@
 					}
 				],
 				"url": {
-					"raw": "http://localhost:5001/api/results?apitype=1&scanId={{scanId}}",
+					"raw": "http://localhost:5001/api/results?apitype=2&scanId={{scanId}}",
 					"protocol": "http",
 					"host": [
 						"localhost"
@@ -469,7 +535,7 @@
 					"query": [
 						{
 							"key": "apitype",
-							"value": "1"
+							"value": "2"
 						},
 						{
 							"key": "scanId",
@@ -505,22 +571,22 @@
 	],
 	"variable": [
 		{
-			"id": "4534d206-7bff-4467-a6b3-ba394e2b93cf",
+			"id": "163adfd4-a52c-4343-85b5-b949f202004e",
 			"key": "PYNT-PORT",
 			"value": "5001"
 		},
 		{
-			"id": "3c7ad777-a7da-4e3d-b3e3-45ccc2846d23",
+			"id": "3383e778-bbb2-4be9-8c28-81a415468070",
 			"key": "API-KEY",
 			"value": ""
 		},
 		{
-			"id": "a23fa112-1fc7-404e-a2cc-c2c6a5bd7b8b",
+			"id": "a92145ae-2435-4f04-9595-1eb8338cb0cb",
 			"key": "YOUR-COLLECTION",
 			"value": ""
 		},
 		{
-			"id": "6b4f8834-ac81-41d0-8bea-ff0071401df1",
+			"id": "d01a45db-6522-4a6b-80c7-10e0fbaed8b4",
 			"key": "scanId",
 			"value": ""
 		}
