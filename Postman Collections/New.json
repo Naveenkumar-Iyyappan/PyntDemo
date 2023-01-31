@@ -407,6 +407,72 @@
 			"response": []
 		},
 		{
+			"name": "Lack of Resources and Rate Limiting (OWASP-10 API4)",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"id": "5542eb1e-7d37-4f97-9cc9-6275c9f0a8ee",
+						"exec": [
+							"results = pm.response.json();",
+							"if (pm.response.code == 202) {",
+							"\tpm.test(\"\", () => {throw new Error(results)});",
+							"\treturn",
+							"}",
+							"if(Object.keys(results).length > 0 ){",
+							"\tfor(var attackType in results){",
+							"\t\tcases = results[attackType]",
+							"\t\tfor(var i in cases) {",
+							"\t\t\tpm.test(attackType, () => {throw new Error(cases[i])});",
+							"\t\t}",
+							"\t}",
+							"}",
+							"else{",
+							"\tpm.test(\"\")",
+							"}"
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"id": "054dfcbd-8019-4b7e-bd03-194fd0bfa4f9",
+			"protocolProfileBehavior": {
+				"disableBodyPruning": true
+			},
+			"request": {
+				"method": "GET",
+				"header": [
+					{
+						"key": "Content-Type",
+						"value": "application/json"
+					}
+				],
+				"url": {
+					"raw": "http://localhost:5001/api/results?apitype=4&scanId={{scanId}}",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "5001",
+					"path": [
+						"api",
+						"results"
+					],
+					"query": [
+						{
+							"key": "apitype",
+							"value": "4"
+						},
+						{
+							"key": "scanId",
+							"value": "{{scanId}}"
+						}
+					]
+				}
+			},
+			"response": []
+		},
+		{
 			"name": "Scan Results",
 			"event": [
 				{
@@ -637,22 +703,22 @@
 	],
 	"variable": [
 		{
-			"id": "f1399a24-e4f5-4e03-a489-0f06fb5e8f0a",
+			"id": "d60ee7a3-f800-45d8-9af1-be761bc954db",
 			"key": "PYNT-PORT",
 			"value": "5001"
 		},
 		{
-			"id": "e403bd82-a6b8-4716-8514-6bab6f96268e",
+			"id": "292d27d1-7a74-4c55-a73f-0d3a868ffd2b",
 			"key": "API-KEY",
 			"value": ""
 		},
 		{
-			"id": "f91e4c46-5519-4df6-bdde-2c3f309f29ed",
+			"id": "064b5e58-fc7c-4219-bc6a-461c0f6cf0e9",
 			"key": "YOUR-COLLECTION",
 			"value": ""
 		},
 		{
-			"id": "a1e56203-3e01-453f-9ec0-382ab5f7b821",
+			"id": "463442c3-cc20-4df3-bb30-ca4646440f1a",
 			"key": "scanId",
 			"value": ""
 		}
