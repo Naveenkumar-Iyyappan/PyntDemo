@@ -7,110 +7,6 @@
 	},
 	"item": [
 		{
-			"name": "New Folder",
-			"item": [
-				{
-					"name": "Vault?",
-					"event": [
-						{
-							"listen": "test",
-							"script": {
-								"type": "text/javascript",
-								"exec": [
-									"var jsonData = JSON.parse(responseBody);",
-									"postman.setEnvironmentVariable(\"datahub_access_token\", jsonData.access_token)"
-								],
-								"id": "ce81f092-bf2f-4b99-af7f-e1b1259ad867"
-							}
-						}
-					],
-					"id": "c5bf0ba6-89a5-43bc-badb-95d93da2448f",
-					"protocolProfileBehavior": {
-						"disableBodyPruning": true
-					},
-					"request": {
-						"method": "POST",
-						"header": [
-							{
-								"key": "Content-Type",
-								"name": "Content-Type",
-								"type": "text",
-								"value": "application/json"
-							},
-							{
-								"key": "Host",
-								"type": "text",
-								"value": "login.microsoftonline.com"
-							},
-							{
-								"key": "Authorization",
-								"type": "text",
-								"value": "bearer {{access_token}}"
-							},
-							{
-								"key": "Access-Charset",
-								"type": "text",
-								"value": "utf-8"
-							}
-						],
-						"body": {
-							"mode": "urlencoded",
-							"urlencoded": [
-								{
-									"key": "client_id",
-									"value": "acbd7df9-1301-4ac7-83b0-a159847a84eb",
-									"type": "text"
-								},
-								{
-									"key": "client_secret",
-									"value": "7SHldRbn-J1.Jq.24GeBG-fAO_2Rk.NGjm",
-									"type": "text"
-								},
-								{
-									"key": "resource",
-									"value": "acbd7df9-1301-4ac7-83b0-a159847a84eb",
-									"type": "text"
-								},
-								{
-									"key": "grant_type",
-									"value": "client_credentials",
-									"type": "text"
-								}
-							]
-						},
-						"url": {
-							"raw": "https://login.microsoftonline.com/0a046d9e-f03a-4446-bcdd-0923b009e5ce/oauth2/token",
-							"protocol": "https",
-							"host": [
-								"login",
-								"microsoftonline",
-								"com"
-							],
-							"path": [
-								"0a046d9e-f03a-4446-bcdd-0923b009e5ce",
-								"oauth2",
-								"token"
-							],
-							"query": [
-								{
-									"key": "client_id",
-									"value": "",
-									"disabled": true
-								},
-								{
-									"key": "client_secret",
-									"value": "",
-									"disabled": true
-								}
-							]
-						}
-					},
-					"response": []
-				}
-			],
-			"id": "9aae6a5f-26ba-4291-9fe4-dc31637328a6"
-		},
-		{
 			"name": "Start automated security tests",
 			"event": [
 				{
@@ -1539,22 +1435,22 @@
 	],
 	"variable": [
 		{
-			"id": "b1ed8a18-ff50-4a59-a28d-06599f71847d",
+			"id": "8a330268-67e6-4979-85c6-507f5bc4ed12",
 			"key": "port",
 			"value": "5001"
 		},
 		{
-			"id": "7afad793-a61e-4bf0-b14f-84bdfba7903e",
+			"id": "e784db96-f22c-4d86-bead-47bfc446f231",
 			"key": "API-KEY",
 			"value": ""
 		},
 		{
-			"id": "f8b09cc6-9de3-4dfb-bc46-03af2eb3b3fd",
+			"id": "7497f0a9-8957-4961-af69-d51a7d957b44",
 			"key": "YOUR-COLLECTION",
 			"value": ""
 		},
 		{
-			"id": "1a38f2b7-c4fa-4b7b-b7b3-6be67d677c4f",
+			"id": "17936979-f6cf-4ee9-a12d-1840c61c40c6",
 			"key": "scanId",
 			"value": ""
 		}
