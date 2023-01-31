@@ -941,6 +941,72 @@
 				}
 			},
 			"response": []
+		},
+		{
+			"name": "Improper Assets Management (OWASP-10 API9)",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"id": "400ed207-367d-4be1-9cc3-35e9ce7182ff",
+						"exec": [
+							"results = pm.response.json();",
+							"if (pm.response.code == 202) {",
+							"\tpm.test(\"\", () => {throw new Error(results)});",
+							"\treturn",
+							"}",
+							"if(Object.keys(results).length > 0 ){",
+							"\tfor(var attackType in results){",
+							"\t\tcases = results[attackType]",
+							"\t\tfor(var i in cases) {",
+							"\t\t\tpm.test(attackType, () => {throw new Error(cases[i])});",
+							"\t\t}",
+							"\t}",
+							"}",
+							"else{",
+							"\tpm.test(\"\")",
+							"}"
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"id": "ccf83722-905b-4809-939a-b9f261ad7296",
+			"protocolProfileBehavior": {
+				"disableBodyPruning": true
+			},
+			"request": {
+				"method": "GET",
+				"header": [
+					{
+						"key": "Content-Type",
+						"value": "application/json"
+					}
+				],
+				"url": {
+					"raw": "http://localhost:5001/api/results?apitype=9&scanId={{scanId}}",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "5001",
+					"path": [
+						"api",
+						"results"
+					],
+					"query": [
+						{
+							"key": "apitype",
+							"value": "9"
+						},
+						{
+							"key": "scanId",
+							"value": "{{scanId}}"
+						}
+					]
+				}
+			},
+			"response": []
 		}
 	],
 	"event": [
@@ -967,22 +1033,22 @@
 	],
 	"variable": [
 		{
-			"id": "76e1eb7a-a378-4fe9-a121-ff1e33352bb5",
+			"id": "2b1d1cd7-ce8d-46d5-a4ff-833948d79e5e",
 			"key": "PYNT-PORT",
 			"value": "5001"
 		},
 		{
-			"id": "f1f0b031-e452-474a-9103-ebee169b1f3c",
+			"id": "a8036bd1-d1be-4f23-a452-8bd402bc740f",
 			"key": "API-KEY",
 			"value": ""
 		},
 		{
-			"id": "22ac8222-ad89-41df-9e16-7d5aa90f9948",
+			"id": "bc25fd33-c591-445a-a604-f3fbb642bdb6",
 			"key": "YOUR-COLLECTION",
 			"value": ""
 		},
 		{
-			"id": "78f35898-3360-4332-9527-154323292775",
+			"id": "303b32e0-6321-4b9a-b0dc-478f5b4e39f1",
 			"key": "scanId",
 			"value": ""
 		}
