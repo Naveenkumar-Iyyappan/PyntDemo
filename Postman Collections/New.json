@@ -28,7 +28,7 @@
 					}
 				}
 			],
-			"_postman_id": "8c52ea99-8421-4f02-b534-f38d56500617",
+			"id": "8c52ea99-8421-4f02-b534-f38d56500617",
 			"protocolProfileBehavior": {
 				"disableBodyPruning": true
 			},
@@ -62,7 +62,7 @@
 					}
 				}
 			],
-			"_postman_id": "96db7985-7815-4596-bca8-9632ec113fde",
+			"id": "96db7985-7815-4596-bca8-9632ec113fde",
 			"protocolProfileBehavior": {
 				"disableBodyPruning": true
 			},
@@ -110,7 +110,7 @@
 					}
 				}
 			],
-			"_postman_id": "37473a32-4064-40b2-8637-e904013585f5",
+			"id": "37473a32-4064-40b2-8637-e904013585f5",
 			"protocolProfileBehavior": {
 				"disableBodyPruning": true
 			},
@@ -124,10 +124,7 @@
 				],
 				"body": {
 					"mode": "raw",
-					"raw": "{\n  \"apiKey\": \"{{API-KEY}}\",\n  \"collectionToTest\": \"{{YOUR-COLLECTION}}\",\n   \"environmentName\": \"{{envName}}\"\n}",
-					"options": {
-						"raw": {}
-					}
+					"raw": "{\n  \"apiKey\": \"{{API-KEY}}\",\n  \"collectionToTest\": \"{{YOUR-COLLECTION}}\",\n   \"environmentName\": \"{{envName}}\"\n}"
 				},
 				"url": "http://localhost:{{PYNT-PORT}}/api/run_scan"
 			},
@@ -178,7 +175,7 @@
 					}
 				}
 			],
-			"_postman_id": "03a8b519-0275-4e0d-b653-42e6e874631e",
+			"id": "03a8b519-0275-4e0d-b653-42e6e874631e",
 			"protocolProfileBehavior": {
 				"disableBodyPruning": true
 			},
@@ -242,7 +239,7 @@
 					}
 				}
 			],
-			"_postman_id": "2f0caf60-27a1-42df-9ec3-5bde3d3a2b1e",
+			"id": "2f0caf60-27a1-42df-9ec3-5bde3d3a2b1e",
 			"protocolProfileBehavior": {
 				"disableBodyPruning": true
 			},
@@ -304,7 +301,7 @@
 					}
 				}
 			],
-			"_postman_id": "0186d06d-4d7c-4d25-ab43-24d376432701",
+			"id": "0186d06d-4d7c-4d25-ab43-24d376432701",
 			"protocolProfileBehavior": {
 				"disableBodyPruning": true
 			},
@@ -349,7 +346,7 @@
 					}
 				}
 			],
-			"_postman_id": "54311238-4438-4f27-909f-9c055e26076c",
+			"id": "54311238-4438-4f27-909f-9c055e26076c",
 			"protocolProfileBehavior": {
 				"disableBodyPruning": true
 			},
@@ -389,7 +386,7 @@
 					}
 				}
 			],
-			"_postman_id": "3086680d-f7a8-4b49-b06f-3c65dbcfc1cf",
+			"id": "3086680d-f7a8-4b49-b06f-3c65dbcfc1cf",
 			"protocolProfileBehavior": {
 				"disableBodyPruning": true
 			},
@@ -422,7 +419,7 @@
 		{
 			"listen": "prerequest",
 			"script": {
-				"id": "db2bf61a-071e-475e-b032-ccf2af6118ea",
+				"id": "18754f5b-7f71-42da-aaff-9621b8981f34",
 				"type": "text/javascript",
 				"exec": [
 					""
@@ -432,7 +429,7 @@
 		{
 			"listen": "test",
 			"script": {
-				"id": "1d93924d-58f2-43a3-9210-22debbbdbe35",
+				"id": "4351b7ea-1527-416a-ae73-02488940587c",
 				"type": "text/javascript",
 				"exec": [
 					""
@@ -442,28 +439,24 @@
 	],
 	"variable": [
 		{
-			"id": "6838b190-a3e4-4780-9737-b09f6b080e02",
+			"id": "7f502370-dcf9-42fb-957a-cf9d23a4fc82",
 			"key": "PYNT-PORT",
-			"value": "5001",
-			"type": "string"
+			"value": "5001"
 		},
 		{
-			"id": "140ed2a5-9c51-4d5a-8b01-dd2dfdec19a3",
+			"id": "6394e45f-bc86-4d3d-97ba-fc8d0c863264",
 			"key": "API-KEY",
-			"value": "",
-			"type": "string"
+			"value": ""
 		},
 		{
-			"id": "66b38cdc-d492-414f-a1ed-679055d1e6df",
+			"id": "df46f631-94f7-4295-b445-c3865ab42ec7",
 			"key": "YOUR-COLLECTION",
-			"value": "",
-			"type": "string"
+			"value": ""
 		},
 		{
-			"id": "3eeb730d-a587-40a6-986f-d07c1465fbe9",
+			"id": "18de94b4-befa-4434-a934-f017c0d2c4f5",
 			"key": "scanId",
-			"value": "",
-			"type": "string"
+			"value": ""
 		}
 	]
 }
