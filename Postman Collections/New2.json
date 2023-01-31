@@ -1,0 +1,524 @@
+{
+	"info": {
+		"_postman_id": "1a63c2ff-e04f-4369-9fc5-14c901030749",
+		"name": "Delaware API",
+		"schema": "https://schema.getpostman.com/json/collection/v2.0.0/collection.json"
+	},
+	"item": [
+		{
+			"name": "Quest Transaction",
+			"item": [
+				{
+					"name": "Get access token",
+					"_postman_id": "9a5ee31a-bf46-4689-bc87-b212403a2718",
+					"protocolProfileBehavior": {
+						"disableBodyPruning": true
+					},
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "urlencoded",
+							"urlencoded": [
+								{
+									"key": "client_id",
+									"value": "kBwA0XvnJ8k2A5q5D6yWMUSIwZ0J1Lbj",
+									"type": "text"
+								},
+								{
+									"key": "client_secret",
+									"value": "pQ34nLH8zv9vmecS",
+									"type": "text"
+								}
+							],
+							"options": {
+								"urlencoded": {}
+							}
+						},
+						"url": {
+							"raw": "https://api.delawarenorth.com/oauth/client_credential/accesstoken?grant_type=client_credentials",
+							"protocol": "https",
+							"host": [
+								"api",
+								"delawarenorth",
+								"com"
+							],
+							"path": [
+								"oauth",
+								"client_credential",
+								"accesstoken"
+							],
+							"query": [
+								{
+									"key": "grant_type",
+									"value": "client_credentials"
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "List All Locations",
+					"_postman_id": "ad61d55f-9871-4e7b-a748-e8a51e10a6ee",
+					"protocolProfileBehavior": {
+						"disableBodyPruning": true
+					},
+					"request": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": "application/json",
+								"type": "text"
+							},
+							{
+								"key": "Authorization",
+								"value": "Bearer Q41nvoAhW4bm29rsMUIZ9lzEGFOc",
+								"type": "text"
+							}
+						],
+						"url": "https://api.delawarenorth.com/dnc/edc/v1/ALL/locations"
+					},
+					"response": []
+				},
+				{
+					"name": "Quest Last Transaction ID - Prod",
+					"_postman_id": "0cc46ce2-2023-4896-8f6f-22368c39c835",
+					"protocolProfileBehavior": {
+						"disableBodyPruning": true
+					},
+					"request": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "Authorization",
+								"value": "Bearer ictNCyzz7Iosskmx0qrSlGBRWGHF",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "urlencoded",
+							"urlencoded": [],
+							"options": {
+								"urlencoded": {}
+							}
+						},
+						"url": {
+							"raw": "https://api.delawarenorth.com/dnc/edc/v1/ats/transactions?source_system=quest&max_results=1&sort=[(%22origin_id_int%22,-1)]&projection={%22origin_id_int%22:1}",
+							"protocol": "https",
+							"host": [
+								"api",
+								"delawarenorth",
+								"com"
+							],
+							"path": [
+								"dnc",
+								"edc",
+								"v1",
+								"ats",
+								"transactions"
+							],
+							"query": [
+								{
+									"key": "source_system",
+									"value": "quest"
+								},
+								{
+									"key": "max_results",
+									"value": "1"
+								},
+								{
+									"key": "sort",
+									"value": "[(%22origin_id_int%22,-1)]"
+								},
+								{
+									"key": "projection",
+									"value": "{%22origin_id_int%22:1}"
+								},
+								{
+									"key": "apikey",
+									"value": "5a0b4cdd97019951665ab973d6a6aaa773967f8b735a716fbd6aed5f",
+									"disabled": true
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Quest Last Transaction ID - Test",
+					"_postman_id": "186e51a0-9cd9-4435-b281-da8254b0edf4",
+					"protocolProfileBehavior": {
+						"disableBodyPruning": true
+					},
+					"request": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "Authorization",
+								"value": "Bearer ictNCyzz7Iosskmx0qrSlGBRWGHF",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "urlencoded",
+							"urlencoded": [],
+							"options": {
+								"urlencoded": {}
+							}
+						},
+						"url": {
+							"raw": "https://dnc-test.apigee.net/dnc/edc/v1/ats/transactions?source_system=quest&max_results=1&sort=[(%22origin_id_int%22,-1)]&projection={%22origin_id_int%22:1}",
+							"protocol": "https",
+							"host": [
+								"dnc-test",
+								"apigee",
+								"net"
+							],
+							"path": [
+								"dnc",
+								"edc",
+								"v1",
+								"ats",
+								"transactions"
+							],
+							"query": [
+								{
+									"key": "source_system",
+									"value": "quest"
+								},
+								{
+									"key": "max_results",
+									"value": "1"
+								},
+								{
+									"key": "sort",
+									"value": "[(%22origin_id_int%22,-1)]"
+								},
+								{
+									"key": "projection",
+									"value": "{%22origin_id_int%22:1}"
+								},
+								{
+									"key": "apikey",
+									"value": "5a0b4cdd97019951665ab973d6a6aaa773967f8b735a716fbd6aed5f",
+									"disabled": true
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Quest get range of transactions - Prod",
+					"_postman_id": "729ce620-a6d0-4a0c-a4bf-77dd0f21ab0e",
+					"protocolProfileBehavior": {
+						"disableBodyPruning": true
+					},
+					"request": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "Authorization",
+								"value": "Bearer ictNCyzz7Iosskmx0qrSlGBRWGHF",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "urlencoded",
+							"urlencoded": [],
+							"options": {
+								"urlencoded": {}
+							}
+						},
+						"url": {
+							"raw": "https://api.delawarenorth.com/dnc/edc/v1/ats/transactions?where={\"source_system\" : \"quest\", \"origin_id_int\":  {\"$gte\" : 18627701, \"$lte\" : 18627711}}&sort=[(%22origin_id_int%22,-1)]",
+							"protocol": "https",
+							"host": [
+								"api",
+								"delawarenorth",
+								"com"
+							],
+							"path": [
+								"dnc",
+								"edc",
+								"v1",
+								"ats",
+								"transactions"
+							],
+							"query": [
+								{
+									"key": "where",
+									"value": "{\"source_system\" : \"quest\", \"origin_id_int\":  {\"$gte\" : 18627701, \"$lte\" : 18627711}}"
+								},
+								{
+									"key": "sort",
+									"value": "[(%22origin_id_int%22,-1)]"
+								},
+								{
+									"key": "apikey",
+									"value": "5a0b4cdd97019951665ab973d6a6aaa773967f8b735a716fbd6aed5f",
+									"disabled": true
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Quest get range of transactions - Test",
+					"_postman_id": "1b8d8965-8149-471a-a4ff-b1055fa3dc4e",
+					"protocolProfileBehavior": {
+						"disableBodyPruning": true
+					},
+					"request": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "Authorization",
+								"value": "Bearer ictNCyzz7Iosskmx0qrSlGBRWGHF",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "urlencoded",
+							"urlencoded": [],
+							"options": {
+								"urlencoded": {}
+							}
+						},
+						"url": {
+							"raw": "https://dnc-test.apigee.net/dnc/edc/v1/ats/transactions?where={\"source_system\" : \"quest\", \"origin_id_int\":  {\"$gte\" : 18627701, \"$lte\" : 18627711}}&sort=[(%22origin_id_int%22,-1)]",
+							"protocol": "https",
+							"host": [
+								"dnc-test",
+								"apigee",
+								"net"
+							],
+							"path": [
+								"dnc",
+								"edc",
+								"v1",
+								"ats",
+								"transactions"
+							],
+							"query": [
+								{
+									"key": "where",
+									"value": "{\"source_system\" : \"quest\", \"origin_id_int\":  {\"$gte\" : 18627701, \"$lte\" : 18627711}}"
+								},
+								{
+									"key": "sort",
+									"value": "[(%22origin_id_int%22,-1)]"
+								},
+								{
+									"key": "apikey",
+									"value": "5a0b4cdd97019951665ab973d6a6aaa773967f8b735a716fbd6aed5f",
+									"disabled": true
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Micros 3700 get all records for a single date - Prod",
+					"_postman_id": "5746f11f-fbf3-42a8-8781-75a4a7f03011",
+					"protocolProfileBehavior": {
+						"disableBodyPruning": true
+					},
+					"request": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "Authorization",
+								"value": "Bearer XZApvmAroeGP29utkHYXnC5woJMB",
+								"type": "text"
+							}
+						],
+						"url": {
+							"raw": "https://api.delawarenorth.com/dnc/edc/v1/ste/transactions/?where={\"source_system\":\"micros3700\",  \"date_closed\" : {\"$gte\" : \"2023-01-17T00:00:00Z\", \"$lte\" : \"2023-01-17T23:59:59Z\"}}&sort=[(%22origin_id_int%22,-1)]",
+							"protocol": "https",
+							"host": [
+								"api",
+								"delawarenorth",
+								"com"
+							],
+							"path": [
+								"dnc",
+								"edc",
+								"v1",
+								"ste",
+								"transactions",
+								""
+							],
+							"query": [
+								{
+									"key": "where",
+									"value": "{\"source_system\":\"micros3700\",  \"date_closed\" : {\"$gte\" : \"2023-01-17T00:00:00Z\", \"$lte\" : \"2023-01-17T23:59:59Z\"}}"
+								},
+								{
+									"key": "sort",
+									"value": "[(%22origin_id_int%22,-1)]"
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Micros 3700 get all records for a single date - Test",
+					"_postman_id": "2ef9a293-6494-4877-acbf-abbce5bbaf68",
+					"protocolProfileBehavior": {
+						"disableBodyPruning": true
+					},
+					"request": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "Authorization",
+								"value": "Bearer XZApvmAroeGP29utkHYXnC5woJMB",
+								"type": "text"
+							}
+						],
+						"url": {
+							"raw": "https://dnc-test.apigee.net/dnc/edc/v1/ste/transactions/?where={\"source_system\":\"micros3700\",  \"date_closed\" : {\"$gte\" : \"2023-01-17T00:00:00Z\", \"$lte\" : \"2023-01-17T23:59:59Z\"}}&sort=[(%22origin_id_int%22,-1)]",
+							"protocol": "https",
+							"host": [
+								"dnc-test",
+								"apigee",
+								"net"
+							],
+							"path": [
+								"dnc",
+								"edc",
+								"v1",
+								"ste",
+								"transactions",
+								""
+							],
+							"query": [
+								{
+									"key": "where",
+									"value": "{\"source_system\":\"micros3700\",  \"date_closed\" : {\"$gte\" : \"2023-01-17T00:00:00Z\", \"$lte\" : \"2023-01-17T23:59:59Z\"}}"
+								},
+								{
+									"key": "sort",
+									"value": "[(%22origin_id_int%22,-1)]"
+								}
+							]
+						}
+					},
+					"response": []
+				}
+			],
+			"_postman_id": "087dd162-3496-48a7-a299-78b5d52ab085"
+		},
+		{
+			"name": "Infor Vouchers to IBM",
+			"item": [
+				{
+					"name": "Get Voucher Data",
+					"_postman_id": "e7d662ae-3648-44c0-a64a-1029c207eca1",
+					"protocolProfileBehavior": {
+						"disableBodyPruning": true
+					},
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Content-Transfer-Encoding",
+								"value": "text/xml; charset=utf-8",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "<soap-env:Envelope xmlns:soap-env=\"http://schemas.xmlsoap.org/soap/envelope/\">\r\n  <soap-env:Header>\r\n    <ns0:Organization xmlns:ns0=\"http://schemas.datastream.net/MP_functions\">*</ns0:Organization>\r\n    <wsse:Security xmlns:wsse=\"http://docs.oasis-open.org/wss/2004/01/oasis-200401-wss-wssecurity-secext-1.0.xsd\">\r\n      <wsse:UsernameToken>\r\n        <wsse:Username>FIORANO@PROD</wsse:Username>\r\n        <wsse:Password Type=\"http://docs.oasis-open.org/wss/2004/01/oasis-200401-wss-username-token-profile-1.0#PasswordText\">SOA12!15</wsse:Password>\r\n      </wsse:UsernameToken>\r\n    </wsse:Security>\r\n  </soap-env:Header>\r\n  <soap-env:Body>\r\n    <ns0:MP0118_GetGridHeaderData_001 xmlns:ns0=\"http://schemas.datastream.net/MP_functions/MP0118_GetGridHeaderData_001\">\r\n      <ns0:FUNCTION_REQUEST_INFO REQUEST_TYPE=\"LIST.HEAD_DATA.STORED\">\r\n        <ns1:GRID xmlns:ns1=\"http://schemas.datastream.net/MP_functions/GridRequest\" GRID_NAME=\"1UINVO\" USER_FUNCTION_NAME=\"1UINVO\" NUMBER_OF_ROWS_FIRST_RETURNED=\"1000\" CURSOR_POSITION=\"1\" RESULT_IN_SAXORDER=\"true\"/>\r\n        <ns2:GRID_TYPE xmlns:ns2=\"http://schemas.datastream.net/MP_functions/GridRequest\" TYPE=\"LIST\"/>\r\n      </ns0:FUNCTION_REQUEST_INFO>\r\n    </ns0:MP0118_GetGridHeaderData_001>\r\n  </soap-env:Body>\r\n</soap-env:Envelope>",
+							"options": {
+								"raw": {
+									"language": "xml"
+								}
+							}
+						},
+						"url": "http://10.200.11.23/axis/services/EWSConnector"
+					},
+					"response": []
+				},
+				{
+					"name": "Get Voucher Data Copy",
+					"_postman_id": "d9f3acdd-5f23-4a9e-8cb0-f9c51c18372b",
+					"protocolProfileBehavior": {
+						"disableBodyPruning": true
+					},
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Content-Transfer-Encoding",
+								"value": "text/xml; charset=utf-8",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "<soapenv:Envelope xmlns:soapenv=\"https://protect-us.mimecast.com/s/XWlxCrk6mVh56JrWu4_PAD?domain=schemas.xmlsoap.org\">\r\n\r\n\t<soapenv:Header>\r\n\r\n\t\t\r\n\r\n\t\r\n\t</soapenv:Header>\r\n\r\n\t<soapenv:Body>\r\n\r\n\t\t<MP0118_GetGridHeaderData_001>\r\n\r\n\t\t\t<FUNCTION_REQUEST_INFO REQUEST_TYPE=\"LIST.HEAD_DATA.STORED\">\r\n\r\n\t\t\t\t<GRID_TYPE TYPE=\"LIST\"/>\r\n\r\n\t\t\t\t<GRID CURRENT_TAB_NAME=\"LST\"  GRID_NAME=\"OSOBJA\" USER_FUNCTION_NAME=\"OSOBJA\"/>\r\n\r\n\t\t\t\t<MULTIADDON_FILTERS>\r\n\r\n\t\t\t\t\t<MADDON_FILTER ALIAS_NAME=\"equipmentno\" JOINER=\"AND\" LPAREN=\"false\" OPERATOR=\"=\" RPAREN=\"false\" SEQNUM=\"1\" VALUE=\"10181\"/>\r\n\r\n\t\t\t\t</MULTIADDON_FILTERS>\r\n\r\n\t\t\t</FUNCTION_REQUEST_INFO>\r\n\r\n\t\t</MP0118_GetGridHeaderData_001>\r\n\r\n\t</soapenv:Body>\r\n\r\n</soapenv:Envelope>",
+							"options": {
+								"raw": {
+									"language": "xml"
+								}
+							}
+						},
+						"url": "http://10.200.11.23/axis/services/EWSConnector"
+					},
+					"response": []
+				},
+				{
+					"name": "Get WSDL",
+					"_postman_id": "e3694975-811b-41d5-a98f-18748673687d",
+					"protocolProfileBehavior": {
+						"disableBodyPruning": true
+					},
+					"request": {
+						"method": "GET",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "",
+							"options": {
+								"raw": {
+									"language": "xml"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://10.200.11.23:7777/axis/services/EWSConnector?wsdl",
+							"protocol": "http",
+							"host": [
+								"10",
+								"200",
+								"11",
+								"23"
+							],
+							"port": "7777",
+							"path": [
+								"axis",
+								"services",
+								"EWSConnector"
+							],
+							"query": [
+								{
+									"key": "wsdl",
+									"value": ""
+								}
+							]
+						}
+					},
+					"response": []
+				}
+			],
+			"_postman_id": "cd0d9dd4-adbf-4510-b585-d382523c54cc"
+		}
+	]
+}
