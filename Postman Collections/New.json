@@ -737,6 +737,138 @@
 			"response": []
 		},
 		{
+			"name": "Improper Assets Management (OWASP-10 API9)",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"id": "400ed207-367d-4be1-9cc3-35e9ce7182ff",
+						"exec": [
+							"results = pm.response.json();",
+							"if (pm.response.code == 202) {",
+							"\tpm.test(\"\", () => {throw new Error(results)});",
+							"\treturn",
+							"}",
+							"if(Object.keys(results).length > 0 ){",
+							"\tfor(var attackType in results){",
+							"\t\tcases = results[attackType]",
+							"\t\tfor(var i in cases) {",
+							"\t\t\tpm.test(attackType, () => {throw new Error(cases[i])});",
+							"\t\t}",
+							"\t}",
+							"}",
+							"else{",
+							"\tpm.test(\"\")",
+							"}"
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"id": "ccf83722-905b-4809-939a-b9f261ad7296",
+			"protocolProfileBehavior": {
+				"disableBodyPruning": true
+			},
+			"request": {
+				"method": "GET",
+				"header": [
+					{
+						"key": "Content-Type",
+						"value": "application/json"
+					}
+				],
+				"url": {
+					"raw": "http://localhost:5001/api/results?apitype=9&scanId={{scanId}}",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "5001",
+					"path": [
+						"api",
+						"results"
+					],
+					"query": [
+						{
+							"key": "apitype",
+							"value": "9"
+						},
+						{
+							"key": "scanId",
+							"value": "{{scanId}}"
+						}
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Server Side Request Forgery (OWASP-10 API10)",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"id": "5b162ccb-e6d3-4923-849f-1b40605073ce",
+						"exec": [
+							"results = pm.response.json();",
+							"if (pm.response.code == 202) {",
+							"\tpm.test(\"\", () => {throw new Error(results)});",
+							"\treturn",
+							"}",
+							"if(Object.keys(results).length > 0 ){",
+							"\tfor(var attackType in results){",
+							"\t\tcases = results[attackType]",
+							"\t\tfor(var i in cases) {",
+							"\t\t\tpm.test(attackType, () => {throw new Error(cases[i])});",
+							"\t\t}",
+							"\t}",
+							"}",
+							"else{",
+							"\tpm.test(\"\")",
+							"}"
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"id": "d2c8e67d-31d6-45d8-8802-5ff0688459ab",
+			"protocolProfileBehavior": {
+				"disableBodyPruning": true
+			},
+			"request": {
+				"method": "GET",
+				"header": [
+					{
+						"key": "Content-Type",
+						"value": "application/json"
+					}
+				],
+				"url": {
+					"raw": "http://localhost:5001/api/results?apitype=10&scanId={{scanId}}",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "5001",
+					"path": [
+						"api",
+						"results"
+					],
+					"query": [
+						{
+							"key": "apitype",
+							"value": "10"
+						},
+						{
+							"key": "scanId",
+							"value": "{{scanId}}"
+						}
+					]
+				}
+			},
+			"response": []
+		},
+		{
 			"name": "Scan Results",
 			"event": [
 				{
@@ -941,72 +1073,6 @@
 				}
 			},
 			"response": []
-		},
-		{
-			"name": "Improper Assets Management (OWASP-10 API9)",
-			"event": [
-				{
-					"listen": "test",
-					"script": {
-						"id": "400ed207-367d-4be1-9cc3-35e9ce7182ff",
-						"exec": [
-							"results = pm.response.json();",
-							"if (pm.response.code == 202) {",
-							"\tpm.test(\"\", () => {throw new Error(results)});",
-							"\treturn",
-							"}",
-							"if(Object.keys(results).length > 0 ){",
-							"\tfor(var attackType in results){",
-							"\t\tcases = results[attackType]",
-							"\t\tfor(var i in cases) {",
-							"\t\t\tpm.test(attackType, () => {throw new Error(cases[i])});",
-							"\t\t}",
-							"\t}",
-							"}",
-							"else{",
-							"\tpm.test(\"\")",
-							"}"
-						],
-						"type": "text/javascript"
-					}
-				}
-			],
-			"id": "ccf83722-905b-4809-939a-b9f261ad7296",
-			"protocolProfileBehavior": {
-				"disableBodyPruning": true
-			},
-			"request": {
-				"method": "GET",
-				"header": [
-					{
-						"key": "Content-Type",
-						"value": "application/json"
-					}
-				],
-				"url": {
-					"raw": "http://localhost:5001/api/results?apitype=9&scanId={{scanId}}",
-					"protocol": "http",
-					"host": [
-						"localhost"
-					],
-					"port": "5001",
-					"path": [
-						"api",
-						"results"
-					],
-					"query": [
-						{
-							"key": "apitype",
-							"value": "9"
-						},
-						{
-							"key": "scanId",
-							"value": "{{scanId}}"
-						}
-					]
-				}
-			},
-			"response": []
 		}
 	],
 	"event": [
@@ -1033,22 +1099,22 @@
 	],
 	"variable": [
 		{
-			"id": "2b1d1cd7-ce8d-46d5-a4ff-833948d79e5e",
+			"id": "32959718-c714-4910-8e6d-a713adbca091",
 			"key": "PYNT-PORT",
 			"value": "5001"
 		},
 		{
-			"id": "a8036bd1-d1be-4f23-a452-8bd402bc740f",
+			"id": "ddd5d157-09ac-4395-b6c7-1c8d6edd9a97",
 			"key": "API-KEY",
 			"value": ""
 		},
 		{
-			"id": "bc25fd33-c591-445a-a604-f3fbb642bdb6",
+			"id": "d5283b85-093e-453e-9345-537377c0341d",
 			"key": "YOUR-COLLECTION",
 			"value": ""
 		},
 		{
-			"id": "303b32e0-6321-4b9a-b0dc-478f5b4e39f1",
+			"id": "a24cdb5e-39a6-4e29-a164-d50cae9fdf5c",
 			"key": "scanId",
 			"value": ""
 		}
