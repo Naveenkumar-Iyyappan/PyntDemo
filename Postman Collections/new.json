@@ -7,6 +7,39 @@
 	},
 	"item": [
 		{
+			"name": "Check that Postman is running from the desktop application",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"id": "d868ef5c-80dc-4740-98a4-80d885b6f067",
+						"exec": [
+							"pm.sendRequest({url: `http://127.0.0.1:5555`}, (error, response) => {",
+							"    console.log(error)",
+							"    if (error!=null && error[\"code\"] == \"ERR_ORION_LOCALHOST_REQUEST\"){",
+							"        postman.setNextRequest(null);",
+							"        pm.test(\"\", () => {throw new Error(\"Pynt is supported on Postman desktop application only - please run again from desktop app\")});",
+							"    } else {",
+							"        pm.test(\"\", () => \"\")",
+							"    }",
+							"})"
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"id": "5248d4ff-8896-4756-9e1b-8a8fd8f3539c",
+			"protocolProfileBehavior": {
+				"disableBodyPruning": true
+			},
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": "https://pynt.io"
+			},
+			"response": []
+		},
+		{
 			"name": "Start automated security tests",
 			"event": [
 				{
@@ -1409,39 +1442,6 @@
 				}
 			},
 			"response": []
-		},
-		{
-			"name": "Check that Postman is running from the desktop application",
-			"event": [
-				{
-					"listen": "test",
-					"script": {
-						"id": "d868ef5c-80dc-4740-98a4-80d885b6f067",
-						"exec": [
-							"pm.sendRequest({url: `http://127.0.0.1:5555`}, (error, response) => {",
-							"    console.log(error)",
-							"    if (error!=null && error[\"code\"] == \"ERR_ORION_LOCALHOST_REQUEST\"){",
-							"        postman.setNextRequest(null);",
-							"        pm.test(\"\", () => {throw new Error(\"Pynt is supported on Postman desktop application only - please run again from desktop app\")});",
-							"    } else {",
-							"        pm.test(\"\", () => \"\")",
-							"    }",
-							"})"
-						],
-						"type": "text/javascript"
-					}
-				}
-			],
-			"id": "5248d4ff-8896-4756-9e1b-8a8fd8f3539c",
-			"protocolProfileBehavior": {
-				"disableBodyPruning": true
-			},
-			"request": {
-				"method": "GET",
-				"header": [],
-				"url": "https://pynt.io"
-			},
-			"response": []
 		}
 	],
 	"event": [
@@ -1468,22 +1468,22 @@
 	],
 	"variable": [
 		{
-			"id": "7b14cdcc-acf7-4071-8c30-27aa24c28b57",
+			"id": "e2cebc8c-41f1-465a-98ba-88443bbf23a3",
 			"key": "port",
 			"value": "5001"
 		},
 		{
-			"id": "0eb8070f-18e3-476b-a0e9-09c9c4d8e992",
+			"id": "5521ae37-cee8-478a-9501-e036293aefc5",
 			"key": "API-KEY",
 			"value": ""
 		},
 		{
-			"id": "1d1a9507-4e17-4250-9785-57ac9e6529d3",
+			"id": "8a28f097-c81f-4b19-bf5a-5473a8e851d7",
 			"key": "YOUR-COLLECTION",
 			"value": ""
 		},
 		{
-			"id": "83ea74f8-8c42-45b5-9ec2-b1529808aa8f",
+			"id": "aa5cb911-d5d2-4be0-b4ab-ccd4d0a507bc",
 			"key": "scanId",
 			"value": ""
 		}
