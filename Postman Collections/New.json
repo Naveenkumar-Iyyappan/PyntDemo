@@ -875,6 +875,72 @@
 				}
 			},
 			"response": []
+		},
+		{
+			"name": "Injection (OWASP-10 API8)",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"id": "947b4eff-c1df-4799-bff6-cf6772cfae26",
+						"exec": [
+							"results = pm.response.json();",
+							"if (pm.response.code == 202) {",
+							"\tpm.test(\"\", () => {throw new Error(results)});",
+							"\treturn",
+							"}",
+							"if(Object.keys(results).length > 0 ){",
+							"\tfor(var attackType in results){",
+							"\t\tcases = results[attackType]",
+							"\t\tfor(var i in cases) {",
+							"\t\t\tpm.test(attackType, () => {throw new Error(cases[i])});",
+							"\t\t}",
+							"\t}",
+							"}",
+							"else{",
+							"\tpm.test(\"\")",
+							"}"
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"id": "0890a371-9baf-48f2-a808-d5c692e4ad80",
+			"protocolProfileBehavior": {
+				"disableBodyPruning": true
+			},
+			"request": {
+				"method": "GET",
+				"header": [
+					{
+						"key": "Content-Type",
+						"value": "application/json"
+					}
+				],
+				"url": {
+					"raw": "http://localhost:5001/api/results?apitype=8&scanId={{scanId}}",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "5001",
+					"path": [
+						"api",
+						"results"
+					],
+					"query": [
+						{
+							"key": "apitype",
+							"value": "8"
+						},
+						{
+							"key": "scanId",
+							"value": "{{scanId}}"
+						}
+					]
+				}
+			},
+			"response": []
 		}
 	],
 	"event": [
@@ -901,22 +967,22 @@
 	],
 	"variable": [
 		{
-			"id": "e72947d0-a3a4-4a19-a75f-a29c68004b15",
+			"id": "08c9e51b-748a-482e-98b0-a7321ff2872a",
 			"key": "PYNT-PORT",
 			"value": "5001"
 		},
 		{
-			"id": "eb9cc8a4-c7f0-4327-9539-452ab4a2bf72",
+			"id": "c65d8289-cdf4-492f-b800-c98fb64ddb84",
 			"key": "API-KEY",
 			"value": ""
 		},
 		{
-			"id": "c2444f4d-218d-48d8-b0d5-8932b1a16b49",
+			"id": "5dac5b08-bb9a-4ddc-93ed-6ca63d0cda30",
 			"key": "YOUR-COLLECTION",
 			"value": ""
 		},
 		{
-			"id": "361733cc-77dd-48fc-b4b1-d0481aab6e9d",
+			"id": "a3512fcd-2d4d-464c-bf57-a1247069b76f",
 			"key": "scanId",
 			"value": ""
 		}
