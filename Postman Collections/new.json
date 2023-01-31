@@ -1442,6 +1442,40 @@
 				}
 			},
 			"response": []
+		},
+		{
+			"name": "Check that Pynt docker is up",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"id": "23e240ae-ffff-48a7-bbc8-896cf7cbc4d8",
+						"exec": [
+							"const port = pm.variables.get(\"PYNT-PORT\")",
+							"pm.sendRequest({url: `http://127.0.0.1:${port}/api/scan_status`}, (error, response) => {",
+							"    console.log(error)",
+							"    if(!(error == null)) {",
+							"        postman.setNextRequest(null);",
+							"        pm.test(\"\", () => {throw new Error(\"Error - Pynt container is not running - please check our Pynt's collection documentation - 'Prerequisites' and 'How to Run' sections\")});",
+							"    } else {",
+							"        pm.test(\"\", () => \"\");",
+							"    }",
+							"})"
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"id": "3d45f660-da78-497f-a508-8a1bb41831eb",
+			"protocolProfileBehavior": {
+				"disableBodyPruning": true
+			},
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": "https://pynt.io"
+			},
+			"response": []
 		}
 	],
 	"event": [
@@ -1468,22 +1502,22 @@
 	],
 	"variable": [
 		{
-			"id": "e2cebc8c-41f1-465a-98ba-88443bbf23a3",
+			"id": "12341d48-9c73-409d-a7f9-b593edeb3c26",
 			"key": "port",
 			"value": "5001"
 		},
 		{
-			"id": "5521ae37-cee8-478a-9501-e036293aefc5",
+			"id": "0764fa37-fd2a-4b7b-9753-2c21e7a5cf13",
 			"key": "API-KEY",
 			"value": ""
 		},
 		{
-			"id": "8a28f097-c81f-4b19-bf5a-5473a8e851d7",
+			"id": "2414c290-c199-46ce-b053-cc6200a2f90a",
 			"key": "YOUR-COLLECTION",
 			"value": ""
 		},
 		{
-			"id": "aa5cb911-d5d2-4be0-b4ab-ccd4d0a507bc",
+			"id": "637de44d-a6b2-40db-b9c0-3e87c035fc0c",
 			"key": "scanId",
 			"value": ""
 		}
