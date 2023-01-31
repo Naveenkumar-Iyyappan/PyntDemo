@@ -14,7 +14,7 @@
 					"script": {
 						"id": "d868ef5c-80dc-4740-98a4-80d885b6f067",
 						"exec": [
-							"pm.sendRequest({url: `http://127.0.0.1:5555`}, (error, response) => {",
+							"pm.sendRequest({url: `http://127.0.0.1:5001`}, (error, response) => {",
 							"    console.log(error)",
 							"    if (error!=null && error[\"code\"] == \"ERR_ORION_LOCALHOST_REQUEST\"){",
 							"        postman.setNextRequest(null);",
@@ -1502,22 +1502,22 @@
 	],
 	"variable": [
 		{
-			"id": "5ff9742f-da85-48b4-80d3-287da9cd1741",
+			"id": "6e9d926d-263c-43bc-aea2-2125b4c74044",
 			"key": "port",
 			"value": "5001"
 		},
 		{
-			"id": "34654307-6c7d-45b9-a47f-d41f13c7cdb8",
+			"id": "7832e6e6-a6b8-40cc-90b4-a0df83dccf8d",
 			"key": "API-KEY",
 			"value": ""
 		},
 		{
-			"id": "40caa24a-b599-4f7f-b172-68aa5030935e",
+			"id": "bd212295-9090-4a58-bc8a-f474f723a77b",
 			"key": "YOUR-COLLECTION",
 			"value": ""
 		},
 		{
-			"id": "43723072-d968-463e-bbbf-4b0d5a8f08ef",
+			"id": "5f3324fb-4b53-49ed-9245-aa1517987fd4",
 			"key": "scanId",
 			"value": ""
 		}
