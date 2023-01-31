@@ -1409,13 +1409,46 @@
 				}
 			},
 			"response": []
+		},
+		{
+			"name": "Check that Postman is running from the desktop application",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"id": "d868ef5c-80dc-4740-98a4-80d885b6f067",
+						"exec": [
+							"pm.sendRequest({url: `http://127.0.0.1:5555`}, (error, response) => {",
+							"    console.log(error)",
+							"    if (error!=null && error[\"code\"] == \"ERR_ORION_LOCALHOST_REQUEST\"){",
+							"        postman.setNextRequest(null);",
+							"        pm.test(\"\", () => {throw new Error(\"Pynt is supported on Postman desktop application only - please run again from desktop app\")});",
+							"    } else {",
+							"        pm.test(\"\", () => \"\")",
+							"    }",
+							"})"
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"id": "5248d4ff-8896-4756-9e1b-8a8fd8f3539c",
+			"protocolProfileBehavior": {
+				"disableBodyPruning": true
+			},
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": "https://pynt.io"
+			},
+			"response": []
 		}
 	],
 	"event": [
 		{
 			"listen": "prerequest",
 			"script": {
-				"id": "8f92439b-4b66-4c9f-bac1-b900b32c1f64",
+				"id": "e2a866f7-38f8-4ec6-9137-d29f164d1e2c",
 				"type": "text/javascript",
 				"exec": [
 					""
@@ -1425,7 +1458,7 @@
 		{
 			"listen": "test",
 			"script": {
-				"id": "ed7c3679-e954-4e3d-a28d-2c740b055557",
+				"id": "04f9556f-5f5c-41d2-9358-674753f40a1f",
 				"type": "text/javascript",
 				"exec": [
 					""
@@ -1435,22 +1468,22 @@
 	],
 	"variable": [
 		{
-			"id": "e85d1955-2a2e-492d-b57a-911d8f6958d8",
+			"id": "7b14cdcc-acf7-4071-8c30-27aa24c28b57",
 			"key": "port",
 			"value": "5001"
 		},
 		{
-			"id": "6d0d967c-5248-44f3-90c6-1166f6c5afea",
+			"id": "0eb8070f-18e3-476b-a0e9-09c9c4d8e992",
 			"key": "API-KEY",
 			"value": ""
 		},
 		{
-			"id": "84c7af7b-cf03-44f8-81e0-36962bf549c4",
+			"id": "1d1a9507-4e17-4250-9785-57ac9e6529d3",
 			"key": "YOUR-COLLECTION",
 			"value": ""
 		},
 		{
-			"id": "01200c76-8743-4864-8446-da11646e168b",
+			"id": "83ea74f8-8c42-45b5-9ec2-b1529808aa8f",
 			"key": "scanId",
 			"value": ""
 		}
