@@ -479,72 +479,6 @@
 				}
 			},
 			"response": []
-		},
-		{
-			"name": "Broken User Authentication (OWASP-10 API2)",
-			"event": [
-				{
-					"listen": "test",
-					"script": {
-						"id": "22204920-9fcd-4a51-beab-87a7bb61e886",
-						"exec": [
-							"results = pm.response.json();",
-							"if (pm.response.code == 202) {",
-							"\tpm.test(\"\", () => {throw new Error(results)});",
-							"\treturn",
-							"}",
-							"if(Object.keys(results).length > 0 ){",
-							"\tfor(var attackType in results){",
-							"\t\tcases = results[attackType]",
-							"\t\tfor(var i in cases) {",
-							"\t\t\tpm.test(attackType, () => {throw new Error(cases[i])});",
-							"\t\t}",
-							"\t}",
-							"}",
-							"else{",
-							"\tpm.test(\"\")",
-							"}"
-						],
-						"type": "text/javascript"
-					}
-				}
-			],
-			"id": "4585b73c-975f-4a29-bf37-94b18a4f4021",
-			"protocolProfileBehavior": {
-				"disableBodyPruning": true
-			},
-			"request": {
-				"method": "GET",
-				"header": [
-					{
-						"key": "Content-Type",
-						"value": "application/json"
-					}
-				],
-				"url": {
-					"raw": "http://localhost:5001/api/results?apitype=2&scanId={{scanId}}",
-					"protocol": "http",
-					"host": [
-						"localhost"
-					],
-					"port": "5001",
-					"path": [
-						"api",
-						"results"
-					],
-					"query": [
-						{
-							"key": "apitype",
-							"value": "2"
-						},
-						{
-							"key": "scanId",
-							"value": "{{scanId}}"
-						}
-					]
-				}
-			},
-			"response": []
 		}
 	],
 	"event": [
@@ -571,22 +505,22 @@
 	],
 	"variable": [
 		{
-			"id": "163adfd4-a52c-4343-85b5-b949f202004e",
+			"id": "5b42f4fc-acbc-465b-afc0-539d593a8a6d",
 			"key": "PYNT-PORT",
 			"value": "5001"
 		},
 		{
-			"id": "3383e778-bbb2-4be9-8c28-81a415468070",
+			"id": "aab65128-ed05-49a8-bda1-1618632e933d",
 			"key": "API-KEY",
 			"value": ""
 		},
 		{
-			"id": "a92145ae-2435-4f04-9595-1eb8338cb0cb",
+			"id": "b947a2ce-90e4-465f-85b0-852d171035dc",
 			"key": "YOUR-COLLECTION",
 			"value": ""
 		},
 		{
-			"id": "d01a45db-6522-4a6b-80c7-10e0fbaed8b4",
+			"id": "0b77fdab-dc1d-4a10-883d-10b007faabf2",
 			"key": "scanId",
 			"value": ""
 		}
