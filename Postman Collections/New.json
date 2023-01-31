@@ -413,6 +413,72 @@
 				}
 			},
 			"response": []
+		},
+		{
+			"name": "Broken Object Level Authorization (OWASP-10 API1)",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"id": "727383d0-3a80-43bf-a7e9-a5577c8abf4a",
+						"exec": [
+							"results = pm.response.json();",
+							"if (pm.response.code == 202) {",
+							"\tpm.test(\"\", () => {throw new Error(results)});",
+							"\treturn",
+							"}",
+							"if(Object.keys(results).length > 0 ){",
+							"\tfor(var attackType in results){",
+							"\t\tcases = results[attackType]",
+							"\t\tfor(var i in cases) {",
+							"\t\t\tpm.test(attackType, () => {throw new Error(cases[i])});",
+							"\t\t}",
+							"\t}",
+							"}",
+							"else{",
+							"\tpm.test(\"\")",
+							"}"
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"id": "91ced9da-b16b-4d74-bc39-863d69048dce",
+			"protocolProfileBehavior": {
+				"disableBodyPruning": true
+			},
+			"request": {
+				"method": "GET",
+				"header": [
+					{
+						"key": "Content-Type",
+						"value": "application/json"
+					}
+				],
+				"url": {
+					"raw": "http://localhost:5001/api/results?apitype=1&scanId={{scanId}}",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "5001",
+					"path": [
+						"api",
+						"results"
+					],
+					"query": [
+						{
+							"key": "apitype",
+							"value": "1"
+						},
+						{
+							"key": "scanId",
+							"value": "{{scanId}}"
+						}
+					]
+				}
+			},
+			"response": []
 		}
 	],
 	"event": [
@@ -439,22 +505,22 @@
 	],
 	"variable": [
 		{
-			"id": "7f502370-dcf9-42fb-957a-cf9d23a4fc82",
+			"id": "4534d206-7bff-4467-a6b3-ba394e2b93cf",
 			"key": "PYNT-PORT",
 			"value": "5001"
 		},
 		{
-			"id": "6394e45f-bc86-4d3d-97ba-fc8d0c863264",
+			"id": "3c7ad777-a7da-4e3d-b3e3-45ccc2846d23",
 			"key": "API-KEY",
 			"value": ""
 		},
 		{
-			"id": "df46f631-94f7-4295-b445-c3865ab42ec7",
+			"id": "a23fa112-1fc7-404e-a2cc-c2c6a5bd7b8b",
 			"key": "YOUR-COLLECTION",
 			"value": ""
 		},
 		{
-			"id": "18de94b4-befa-4434-a934-f017c0d2c4f5",
+			"id": "6b4f8834-ac81-41d0-8bea-ff0071401df1",
 			"key": "scanId",
 			"value": ""
 		}
