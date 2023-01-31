@@ -7,108 +7,71 @@
 	},
 	"item": [
 		{
-			"name": "New Folder",
-			"item": [
+			"name": "Check that Postman is running from the desktop application",
+			"event": [
 				{
-					"name": "Vault?",
-					"event": [
-						{
-							"listen": "test",
-							"script": {
-								"type": "text/javascript",
-								"exec": [
-									"var jsonData = JSON.parse(responseBody);",
-									"postman.setEnvironmentVariable(\"datahub_access_token\", jsonData.access_token)"
-								],
-								"id": "ce81f092-bf2f-4b99-af7f-e1b1259ad867"
-							}
-						}
-					],
-					"id": "c5bf0ba6-89a5-43bc-badb-95d93da2448f",
-					"protocolProfileBehavior": {
-						"disableBodyPruning": true
-					},
-					"request": {
-						"method": "POST",
-						"header": [
-							{
-								"key": "Content-Type",
-								"name": "Content-Type",
-								"type": "text",
-								"value": "application/json"
-							},
-							{
-								"key": "Host",
-								"type": "text",
-								"value": "login.microsoftonline.com"
-							},
-							{
-								"key": "Authorization",
-								"type": "text",
-								"value": "bearer {{access_token}}"
-							},
-							{
-								"key": "Access-Charset",
-								"type": "text",
-								"value": "utf-8"
-							}
+					"listen": "test",
+					"script": {
+						"id": "d868ef5c-80dc-4740-98a4-80d885b6f067",
+						"exec": [
+							"pm.sendRequest({url: `http://127.0.0.1:5555`}, (error, response) => {",
+							"    console.log(error)",
+							"    if (error!=null && error[\"code\"] == \"ERR_ORION_LOCALHOST_REQUEST\"){",
+							"        postman.setNextRequest(null);",
+							"        pm.test(\"\", () => {throw new Error(\"Pynt is supported on Postman desktop application only - please run again from desktop app\")});",
+							"    } else {",
+							"        pm.test(\"\", () => \"\")",
+							"    }",
+							"})"
 						],
-						"body": {
-							"mode": "urlencoded",
-							"urlencoded": [
-								{
-									"key": "client_id",
-									"value": "acbd7df9-1301-4ac7-83b0-a159847a84eb",
-									"type": "text"
-								},
-								{
-									"key": "client_secret",
-									"value": "7SHldRbn-J1.Jq.24GeBG-fAO_2Rk.NGjm",
-									"type": "text"
-								},
-								{
-									"key": "resource",
-									"value": "acbd7df9-1301-4ac7-83b0-a159847a84eb",
-									"type": "text"
-								},
-								{
-									"key": "grant_type",
-									"value": "client_credentials",
-									"type": "text"
-								}
-							]
-						},
-						"url": {
-							"raw": "https://login.microsoftonline.com/0a046d9e-f03a-4446-bcdd-0923b009e5ce/oauth2/token",
-							"protocol": "https",
-							"host": [
-								"login",
-								"microsoftonline",
-								"com"
-							],
-							"path": [
-								"0a046d9e-f03a-4446-bcdd-0923b009e5ce",
-								"oauth2",
-								"token"
-							],
-							"query": [
-								{
-									"key": "client_id",
-									"value": "",
-									"disabled": true
-								},
-								{
-									"key": "client_secret",
-									"value": "",
-									"disabled": true
-								}
-							]
-						}
-					},
-					"response": []
+						"type": "text/javascript"
+					}
 				}
 			],
-			"id": "9aae6a5f-26ba-4291-9fe4-dc31637328a6"
+			"id": "5248d4ff-8896-4756-9e1b-8a8fd8f3539c",
+			"protocolProfileBehavior": {
+				"disableBodyPruning": true
+			},
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": "https://pynt.io"
+			},
+			"response": []
+		},
+		{
+			"name": "Check that Pynt docker is up",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"id": "23e240ae-ffff-48a7-bbc8-896cf7cbc4d8",
+						"exec": [
+							"const port = pm.variables.get(\"PYNT-PORT\")",
+							"pm.sendRequest({url: `http://127.0.0.1:${port}/api/scan_status`}, (error, response) => {",
+							"    console.log(error)",
+							"    if(!(error == null)) {",
+							"        postman.setNextRequest(null);",
+							"        pm.test(\"\", () => {throw new Error(\"Error - Pynt container is not running - please check our Pynt's collection documentation - 'Prerequisites' and 'How to Run' sections\")});",
+							"    } else {",
+							"        pm.test(\"\", () => \"\");",
+							"    }",
+							"})"
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"id": "3d45f660-da78-497f-a508-8a1bb41831eb",
+			"protocolProfileBehavior": {
+				"disableBodyPruning": true
+			},
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": "https://pynt.io"
+			},
+			"response": []
 		},
 		{
 			"name": "Start automated security tests",
@@ -1519,7 +1482,7 @@
 		{
 			"listen": "prerequest",
 			"script": {
-				"id": "8f92439b-4b66-4c9f-bac1-b900b32c1f64",
+				"id": "e2a866f7-38f8-4ec6-9137-d29f164d1e2c",
 				"type": "text/javascript",
 				"exec": [
 					""
@@ -1529,7 +1492,7 @@
 		{
 			"listen": "test",
 			"script": {
-				"id": "ed7c3679-e954-4e3d-a28d-2c740b055557",
+				"id": "04f9556f-5f5c-41d2-9358-674753f40a1f",
 				"type": "text/javascript",
 				"exec": [
 					""
@@ -1539,22 +1502,22 @@
 	],
 	"variable": [
 		{
-			"id": "b1ed8a18-ff50-4a59-a28d-06599f71847d",
+			"id": "5ff9742f-da85-48b4-80d3-287da9cd1741",
 			"key": "port",
 			"value": "5001"
 		},
 		{
-			"id": "7afad793-a61e-4bf0-b14f-84bdfba7903e",
+			"id": "34654307-6c7d-45b9-a47f-d41f13c7cdb8",
 			"key": "API-KEY",
 			"value": ""
 		},
 		{
-			"id": "f8b09cc6-9de3-4dfb-bc46-03af2eb3b3fd",
+			"id": "40caa24a-b599-4f7f-b172-68aa5030935e",
 			"key": "YOUR-COLLECTION",
 			"value": ""
 		},
 		{
-			"id": "1a38f2b7-c4fa-4b7b-b7b3-6be67d677c4f",
+			"id": "43723072-d968-463e-bbbf-4b0d5a8f08ef",
 			"key": "scanId",
 			"value": ""
 		}
