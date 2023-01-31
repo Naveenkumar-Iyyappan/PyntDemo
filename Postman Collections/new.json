@@ -1509,17 +1509,17 @@
 		{
 			"id": "34654307-6c7d-45b9-a47f-d41f13c7cdb8",
 			"key": "API-KEY",
-			"value": ""
+			"value": "34654307-6c7d-45b9-a47f-d41f13c7cdb8"
 		},
 		{
 			"id": "40caa24a-b599-4f7f-b172-68aa5030935e",
 			"key": "YOUR-COLLECTION",
-			"value": ""
+			"value": "40caa24a-b599-4f7f-b172-68aa5030935e"
 		},
 		{
 			"id": "43723072-d968-463e-bbbf-4b0d5a8f08ef",
 			"key": "scanId",
-			"value": ""
+			"value": "43723072-d968-463e-bbbf-4b0d5a8f08ef"
 		}
 	]
 }
