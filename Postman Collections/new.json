@@ -40,6 +40,40 @@
 			"response": []
 		},
 		{
+			"name": "Check that Pynt docker is up",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"id": "23e240ae-ffff-48a7-bbc8-896cf7cbc4d8",
+						"exec": [
+							"const port = pm.variables.get(\"PYNT-PORT\")",
+							"pm.sendRequest({url: `http://127.0.0.1:${port}/api/scan_status`}, (error, response) => {",
+							"    console.log(error)",
+							"    if(!(error == null)) {",
+							"        postman.setNextRequest(null);",
+							"        pm.test(\"\", () => {throw new Error(\"Error - Pynt container is not running - please check our Pynt's collection documentation - 'Prerequisites' and 'How to Run' sections\")});",
+							"    } else {",
+							"        pm.test(\"\", () => \"\");",
+							"    }",
+							"})"
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"id": "3d45f660-da78-497f-a508-8a1bb41831eb",
+			"protocolProfileBehavior": {
+				"disableBodyPruning": true
+			},
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": "https://pynt.io"
+			},
+			"response": []
+		},
+		{
 			"name": "Start automated security tests",
 			"event": [
 				{
@@ -1442,40 +1476,6 @@
 				}
 			},
 			"response": []
-		},
-		{
-			"name": "Check that Pynt docker is up",
-			"event": [
-				{
-					"listen": "test",
-					"script": {
-						"id": "23e240ae-ffff-48a7-bbc8-896cf7cbc4d8",
-						"exec": [
-							"const port = pm.variables.get(\"PYNT-PORT\")",
-							"pm.sendRequest({url: `http://127.0.0.1:${port}/api/scan_status`}, (error, response) => {",
-							"    console.log(error)",
-							"    if(!(error == null)) {",
-							"        postman.setNextRequest(null);",
-							"        pm.test(\"\", () => {throw new Error(\"Error - Pynt container is not running - please check our Pynt's collection documentation - 'Prerequisites' and 'How to Run' sections\")});",
-							"    } else {",
-							"        pm.test(\"\", () => \"\");",
-							"    }",
-							"})"
-						],
-						"type": "text/javascript"
-					}
-				}
-			],
-			"id": "3d45f660-da78-497f-a508-8a1bb41831eb",
-			"protocolProfileBehavior": {
-				"disableBodyPruning": true
-			},
-			"request": {
-				"method": "GET",
-				"header": [],
-				"url": "https://pynt.io"
-			},
-			"response": []
 		}
 	],
 	"event": [
@@ -1502,22 +1502,22 @@
 	],
 	"variable": [
 		{
-			"id": "12341d48-9c73-409d-a7f9-b593edeb3c26",
+			"id": "5ff9742f-da85-48b4-80d3-287da9cd1741",
 			"key": "port",
 			"value": "5001"
 		},
 		{
-			"id": "0764fa37-fd2a-4b7b-9753-2c21e7a5cf13",
+			"id": "34654307-6c7d-45b9-a47f-d41f13c7cdb8",
 			"key": "API-KEY",
 			"value": ""
 		},
 		{
-			"id": "2414c290-c199-46ce-b053-cc6200a2f90a",
+			"id": "40caa24a-b599-4f7f-b172-68aa5030935e",
 			"key": "YOUR-COLLECTION",
 			"value": ""
 		},
 		{
-			"id": "637de44d-a6b2-40db-b9c0-3e87c035fc0c",
+			"id": "43723072-d968-463e-bbbf-4b0d5a8f08ef",
 			"key": "scanId",
 			"value": ""
 		}
