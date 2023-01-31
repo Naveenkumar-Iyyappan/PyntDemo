@@ -48,7 +48,7 @@
 						"id": "23e240ae-ffff-48a7-bbc8-896cf7cbc4d8",
 						"exec": [
 							"const port = pm.variables.get(\"PYNT-PORT\")",
-							"pm.sendRequest({url: `http://127.0.0.1:${port}/api/scan_status`}, (error, response) => {",
+							"pm.sendRequest({url: `http://127.0.0.1:5001/api/scan_status`}, (error, response) => {",
 							"    console.log(error)",
 							"    if(!(error == null)) {",
 							"        postman.setNextRequest(null);",
@@ -1502,22 +1502,22 @@
 	],
 	"variable": [
 		{
-			"id": "6e9d926d-263c-43bc-aea2-2125b4c74044",
+			"id": "43e589ea-2a68-4679-af11-9558b1455a16",
 			"key": "port",
 			"value": "5001"
 		},
 		{
-			"id": "7832e6e6-a6b8-40cc-90b4-a0df83dccf8d",
+			"id": "1428ba3f-c404-4ff5-bc27-b00474e9fae7",
 			"key": "API-KEY",
 			"value": "34654307-6c7d-45b9-a47f-d41f13c7cdb8"
 		},
 		{
-			"id": "bd212295-9090-4a58-bc8a-f474f723a77b",
+			"id": "1de812d1-b7cb-4d28-8808-b3d06e353806",
 			"key": "YOUR-COLLECTION",
 			"value": "40caa24a-b599-4f7f-b172-68aa5030935e"
 		},
 		{
-			"id": "5f3324fb-4b53-49ed-9245-aa1517987fd4",
+			"id": "36f96b3e-a2a8-4f98-b51f-85cca20def96",
 			"key": "scanId",
 			"value": "43723072-d968-463e-bbbf-4b0d5a8f08ef"
 		}
