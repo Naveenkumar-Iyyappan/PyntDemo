@@ -605,6 +605,72 @@
 			"response": []
 		},
 		{
+			"name": "Security Misconfiguration (OWASP-10 API7)",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"id": "1d7343d0-ce64-4e85-b21d-f087800506ec",
+						"exec": [
+							"results = pm.response.json();",
+							"if (pm.response.code == 202) {",
+							"\tpm.test(\"\", () => {throw new Error(results)});",
+							"\treturn",
+							"}",
+							"if(Object.keys(results).length > 0 ){",
+							"\tfor(var attackType in results){",
+							"\t\tcases = results[attackType]",
+							"\t\tfor(var i in cases) {",
+							"\t\t\tpm.test(attackType, () => {throw new Error(cases[i])});",
+							"\t\t}",
+							"\t}",
+							"}",
+							"else{",
+							"\tpm.test(\"\")",
+							"}"
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"id": "99c6b5f6-ab4d-4b35-8560-2acaae150fd6",
+			"protocolProfileBehavior": {
+				"disableBodyPruning": true
+			},
+			"request": {
+				"method": "GET",
+				"header": [
+					{
+						"key": "Content-Type",
+						"value": "application/json"
+					}
+				],
+				"url": {
+					"raw": "http://localhost:5001/api/results?apitype=7&scanId={{scanId}}",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "5001",
+					"path": [
+						"api",
+						"results"
+					],
+					"query": [
+						{
+							"key": "apitype",
+							"value": "7"
+						},
+						{
+							"key": "scanId",
+							"value": "{{scanId}}"
+						}
+					]
+				}
+			},
+			"response": []
+		},
+		{
 			"name": "Scan Results",
 			"event": [
 				{
@@ -809,72 +875,6 @@
 				}
 			},
 			"response": []
-		},
-		{
-			"name": "Security Misconfiguration (OWASP-10 API7)",
-			"event": [
-				{
-					"listen": "test",
-					"script": {
-						"id": "1d7343d0-ce64-4e85-b21d-f087800506ec",
-						"exec": [
-							"results = pm.response.json();",
-							"if (pm.response.code == 202) {",
-							"\tpm.test(\"\", () => {throw new Error(results)});",
-							"\treturn",
-							"}",
-							"if(Object.keys(results).length > 0 ){",
-							"\tfor(var attackType in results){",
-							"\t\tcases = results[attackType]",
-							"\t\tfor(var i in cases) {",
-							"\t\t\tpm.test(attackType, () => {throw new Error(cases[i])});",
-							"\t\t}",
-							"\t}",
-							"}",
-							"else{",
-							"\tpm.test(\"\")",
-							"}"
-						],
-						"type": "text/javascript"
-					}
-				}
-			],
-			"id": "99c6b5f6-ab4d-4b35-8560-2acaae150fd6",
-			"protocolProfileBehavior": {
-				"disableBodyPruning": true
-			},
-			"request": {
-				"method": "GET",
-				"header": [
-					{
-						"key": "Content-Type",
-						"value": "application/json"
-					}
-				],
-				"url": {
-					"raw": "http://localhost:5001/api/results?apitype=7&scanId={{scanId}}",
-					"protocol": "http",
-					"host": [
-						"localhost"
-					],
-					"port": "5001",
-					"path": [
-						"api",
-						"results"
-					],
-					"query": [
-						{
-							"key": "apitype",
-							"value": "7"
-						},
-						{
-							"key": "scanId",
-							"value": "{{scanId}}"
-						}
-					]
-				}
-			},
-			"response": []
 		}
 	],
 	"event": [
@@ -901,22 +901,22 @@
 	],
 	"variable": [
 		{
-			"id": "3ae81101-694c-4d1d-8b2f-f82441c0dbc1",
+			"id": "e72947d0-a3a4-4a19-a75f-a29c68004b15",
 			"key": "PYNT-PORT",
 			"value": "5001"
 		},
 		{
-			"id": "543e835d-01e7-44b2-8c93-7d4b429d85b9",
+			"id": "eb9cc8a4-c7f0-4327-9539-452ab4a2bf72",
 			"key": "API-KEY",
 			"value": ""
 		},
 		{
-			"id": "f42ac7fd-9c50-4ea3-8560-482ff2115c3e",
+			"id": "c2444f4d-218d-48d8-b0d5-8932b1a16b49",
 			"key": "YOUR-COLLECTION",
 			"value": ""
 		},
 		{
-			"id": "aef11330-58ac-47f2-a6bc-07b664a80f25",
+			"id": "361733cc-77dd-48fc-b4b1-d0481aab6e9d",
 			"key": "scanId",
 			"value": ""
 		}
