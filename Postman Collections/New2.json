@@ -10,7 +10,7 @@
 			"item": [
 				{
 					"name": "Get access token",
-					"_postman_id": "9a5ee31a-bf46-4689-bc87-b212403a2718",
+					"id": "9a5ee31a-bf46-4689-bc87-b212403a2718",
 					"protocolProfileBehavior": {
 						"disableBodyPruning": true
 					},
@@ -30,13 +30,10 @@
 									"value": "pQ34nLH8zv9vmecS",
 									"type": "text"
 								}
-							],
-							"options": {
-								"urlencoded": {}
-							}
+							]
 						},
 						"url": {
-							"raw": "https://api.delawarenorth.com/oauth/client_credential/accesstoken?grant_type=client_credentials",
+							"raw": "https://api.delawarenorth.com/oauth/client_credential/accesstoken?grant_type={{type}}",
 							"protocol": "https",
 							"host": [
 								"api",
@@ -51,7 +48,7 @@
 							"query": [
 								{
 									"key": "grant_type",
-									"value": "client_credentials"
+									"value": "{{type}}"
 								}
 							]
 						}
@@ -60,7 +57,7 @@
 				},
 				{
 					"name": "List All Locations",
-					"_postman_id": "ad61d55f-9871-4e7b-a748-e8a51e10a6ee",
+					"id": "ad61d55f-9871-4e7b-a748-e8a51e10a6ee",
 					"protocolProfileBehavior": {
 						"disableBodyPruning": true
 					},
@@ -84,7 +81,7 @@
 				},
 				{
 					"name": "Quest Last Transaction ID - Prod",
-					"_postman_id": "0cc46ce2-2023-4896-8f6f-22368c39c835",
+					"id": "0cc46ce2-2023-4896-8f6f-22368c39c835",
 					"protocolProfileBehavior": {
 						"disableBodyPruning": true
 					},
@@ -99,10 +96,7 @@
 						],
 						"body": {
 							"mode": "urlencoded",
-							"urlencoded": [],
-							"options": {
-								"urlencoded": {}
-							}
+							"urlencoded": []
 						},
 						"url": {
 							"raw": "https://api.delawarenorth.com/dnc/edc/v1/ats/transactions?source_system=quest&max_results=1&sort=[(%22origin_id_int%22,-1)]&projection={%22origin_id_int%22:1}",
@@ -148,7 +142,7 @@
 				},
 				{
 					"name": "Quest Last Transaction ID - Test",
-					"_postman_id": "186e51a0-9cd9-4435-b281-da8254b0edf4",
+					"id": "186e51a0-9cd9-4435-b281-da8254b0edf4",
 					"protocolProfileBehavior": {
 						"disableBodyPruning": true
 					},
@@ -163,10 +157,7 @@
 						],
 						"body": {
 							"mode": "urlencoded",
-							"urlencoded": [],
-							"options": {
-								"urlencoded": {}
-							}
+							"urlencoded": []
 						},
 						"url": {
 							"raw": "https://dnc-test.apigee.net/dnc/edc/v1/ats/transactions?source_system=quest&max_results=1&sort=[(%22origin_id_int%22,-1)]&projection={%22origin_id_int%22:1}",
@@ -212,7 +203,7 @@
 				},
 				{
 					"name": "Quest get range of transactions - Prod",
-					"_postman_id": "729ce620-a6d0-4a0c-a4bf-77dd0f21ab0e",
+					"id": "729ce620-a6d0-4a0c-a4bf-77dd0f21ab0e",
 					"protocolProfileBehavior": {
 						"disableBodyPruning": true
 					},
@@ -227,10 +218,7 @@
 						],
 						"body": {
 							"mode": "urlencoded",
-							"urlencoded": [],
-							"options": {
-								"urlencoded": {}
-							}
+							"urlencoded": []
 						},
 						"url": {
 							"raw": "https://api.delawarenorth.com/dnc/edc/v1/ats/transactions?where={\"source_system\" : \"quest\", \"origin_id_int\":  {\"$gte\" : 18627701, \"$lte\" : 18627711}}&sort=[(%22origin_id_int%22,-1)]",
@@ -268,7 +256,7 @@
 				},
 				{
 					"name": "Quest get range of transactions - Test",
-					"_postman_id": "1b8d8965-8149-471a-a4ff-b1055fa3dc4e",
+					"id": "1b8d8965-8149-471a-a4ff-b1055fa3dc4e",
 					"protocolProfileBehavior": {
 						"disableBodyPruning": true
 					},
@@ -283,10 +271,7 @@
 						],
 						"body": {
 							"mode": "urlencoded",
-							"urlencoded": [],
-							"options": {
-								"urlencoded": {}
-							}
+							"urlencoded": []
 						},
 						"url": {
 							"raw": "https://dnc-test.apigee.net/dnc/edc/v1/ats/transactions?where={\"source_system\" : \"quest\", \"origin_id_int\":  {\"$gte\" : 18627701, \"$lte\" : 18627711}}&sort=[(%22origin_id_int%22,-1)]",
@@ -324,7 +309,7 @@
 				},
 				{
 					"name": "Micros 3700 get all records for a single date - Prod",
-					"_postman_id": "5746f11f-fbf3-42a8-8781-75a4a7f03011",
+					"id": "5746f11f-fbf3-42a8-8781-75a4a7f03011",
 					"protocolProfileBehavior": {
 						"disableBodyPruning": true
 					},
@@ -369,7 +354,7 @@
 				},
 				{
 					"name": "Micros 3700 get all records for a single date - Test",
-					"_postman_id": "2ef9a293-6494-4877-acbf-abbce5bbaf68",
+					"id": "2ef9a293-6494-4877-acbf-abbce5bbaf68",
 					"protocolProfileBehavior": {
 						"disableBodyPruning": true
 					},
@@ -413,14 +398,14 @@
 					"response": []
 				}
 			],
-			"_postman_id": "087dd162-3496-48a7-a299-78b5d52ab085"
+			"id": "087dd162-3496-48a7-a299-78b5d52ab085"
 		},
 		{
 			"name": "Infor Vouchers to IBM",
 			"item": [
 				{
 					"name": "Get Voucher Data",
-					"_postman_id": "e7d662ae-3648-44c0-a64a-1029c207eca1",
+					"id": "e7d662ae-3648-44c0-a64a-1029c207eca1",
 					"protocolProfileBehavior": {
 						"disableBodyPruning": true
 					},
@@ -448,7 +433,7 @@
 				},
 				{
 					"name": "Get Voucher Data Copy",
-					"_postman_id": "d9f3acdd-5f23-4a9e-8cb0-f9c51c18372b",
+					"id": "d9f3acdd-5f23-4a9e-8cb0-f9c51c18372b",
 					"protocolProfileBehavior": {
 						"disableBodyPruning": true
 					},
@@ -476,7 +461,7 @@
 				},
 				{
 					"name": "Get WSDL",
-					"_postman_id": "e3694975-811b-41d5-a98f-18748673687d",
+					"id": "e3694975-811b-41d5-a98f-18748673687d",
 					"protocolProfileBehavior": {
 						"disableBodyPruning": true
 					},
@@ -518,7 +503,7 @@
 					"response": []
 				}
 			],
-			"_postman_id": "cd0d9dd4-adbf-4510-b585-d382523c54cc"
+			"id": "cd0d9dd4-adbf-4510-b585-d382523c54cc"
 		}
 	]
 }
