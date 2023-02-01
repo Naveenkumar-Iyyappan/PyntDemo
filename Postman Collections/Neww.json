@@ -1024,7 +1024,7 @@
 		{
 			"listen": "prerequest",
 			"script": {
-				"id": "e3cc057e-d1c3-471c-ab04-987fe17ea1a3",
+				"id": "a721f1ad-2a86-4b09-973e-c275665d00ec",
 				"type": "text/javascript",
 				"exec": [
 					""
@@ -1034,7 +1034,7 @@
 		{
 			"listen": "test",
 			"script": {
-				"id": "59698bd8-9bc6-4e78-abc1-885880228def",
+				"id": "58ae61ee-e54f-454f-8bdb-4c0058c2dd5b",
 				"type": "text/javascript",
 				"exec": [
 					""
@@ -1044,24 +1044,25 @@
 	],
 	"variable": [
 		{
-			"id": "2945f453-03c6-4327-96ec-e0a30e297c7a",
-			"key": "PYNT-PORT",
-			"value": "5001"
-		},
-		{
-			"id": "c704b190-4c63-400c-b3c7-24a5802f621d",
+			"id": "8f330e22-4a94-4e55-a156-85748b43abb6",
 			"key": "API-KEY",
 			"value": ""
 		},
 		{
-			"id": "e30c24f8-b26c-4f57-9ab0-64d93a8238d1",
+			"id": "a34102dc-8d8f-4507-9b30-907324f938e9",
 			"key": "YOUR-COLLECTION",
 			"value": ""
 		},
 		{
-			"id": "7d16bb41-5b77-4ea9-be4a-e838c1c4a619",
+			"id": "d720241d-c1c1-438a-9f62-20ed2bcbff85",
 			"key": "scanId",
 			"value": ""
+		},
+		{
+			"id": "12453be3-920e-4ba9-9eb9-8fd0681df6d1",
+			"key": "PYNT-PORT",
+			"value": "5001",
+			"type": "string"
 		}
 	]
 }
