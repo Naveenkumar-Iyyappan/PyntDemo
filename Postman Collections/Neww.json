@@ -1044,22 +1044,22 @@
 	],
 	"variable": [
 		{
-			"id": "db682e9d-2fc3-44bc-a44d-e20e4084f324",
+			"id": "76cfe29e-767c-4eef-acf8-ba9998236817",
 			"key": "API-KEY",
 			"value": ""
 		},
 		{
-			"id": "e83c06e3-b8c8-4faa-8690-91304d06f236",
+			"id": "d4bab88c-f001-410d-8783-1bea7668c828",
 			"key": "YOUR-COLLECTION",
 			"value": ""
 		},
 		{
-			"id": "2ef85489-bb92-4742-a472-45ca796d9088",
+			"id": "4028f971-c5ba-4157-b11b-abb4004db8ec",
 			"key": "scanId",
 			"value": ""
 		},
 		{
-			"id": "a5a2f66d-5dd3-4abb-b3a5-227a3cccb793",
+			"id": "76432c37-2fae-48af-98af-004149df4acb",
 			"key": "PYNT-PORT",
 			"value": "5001",
 			"type": "string"
