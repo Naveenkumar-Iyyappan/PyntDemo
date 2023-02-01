@@ -1024,7 +1024,7 @@
 		{
 			"listen": "prerequest",
 			"script": {
-				"id": "a721f1ad-2a86-4b09-973e-c275665d00ec",
+				"id": "cab2cf52-31bc-46ae-87af-b680628cdf46",
 				"type": "text/javascript",
 				"exec": [
 					""
@@ -1034,7 +1034,7 @@
 		{
 			"listen": "test",
 			"script": {
-				"id": "58ae61ee-e54f-454f-8bdb-4c0058c2dd5b",
+				"id": "c8c25ba5-bbb0-4b3d-8cac-98ddc3f2611d",
 				"type": "text/javascript",
 				"exec": [
 					""
@@ -1044,22 +1044,22 @@
 	],
 	"variable": [
 		{
-			"id": "8f330e22-4a94-4e55-a156-85748b43abb6",
+			"id": "9b06ffd2-63f5-4d3c-9991-0dfc26737b2c",
 			"key": "API-KEY",
 			"value": ""
 		},
 		{
-			"id": "a34102dc-8d8f-4507-9b30-907324f938e9",
+			"id": "439d8bfb-8311-46d0-be73-a614232449e8",
 			"key": "YOUR-COLLECTION",
 			"value": ""
 		},
 		{
-			"id": "d720241d-c1c1-438a-9f62-20ed2bcbff85",
+			"id": "40248070-edfc-42c9-a42b-f7e10e6f82b9",
 			"key": "scanId",
 			"value": ""
 		},
 		{
-			"id": "12453be3-920e-4ba9-9eb9-8fd0681df6d1",
+			"id": "5581eaf0-4e32-4596-9c83-181b419c23dd",
 			"key": "PYNT-PORT",
 			"value": "5001",
 			"type": "string"
